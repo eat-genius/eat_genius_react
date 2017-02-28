@@ -1,0 +1,7 @@
+.add-people-main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #96a5a5;
+  height: 93vh;
+}

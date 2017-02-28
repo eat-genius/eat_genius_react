@@ -18,7 +18,7 @@ class Profile extends React.Component {
         <main className='profile-main'>
           <table className='profile-table'>
             <thead>
-              <tr><th className='profile-th'>Groups<Link to='#'><i className='material-icons'>add_circle_outline</i></Link></th></tr>
+              <tr><th className='profile-th'>Groups<Link to='newGroup'><i className='material-icons'>add_circle_outline</i></Link></th></tr>
             </thead>
             <tbody>
               <tr><td className='profile-td'>Ballard Bombers</td></tr>

@@ -1,0 +1,26 @@
+.new-group-main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #96a5a5;
+  height: 93vh;
+}
+
+.new-group {
+  margin-top: 20px;
+  width: 500px;
+  border: solid black 2px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  background-color: #ffe8a3;
+}
+
+.new-group-form {
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
