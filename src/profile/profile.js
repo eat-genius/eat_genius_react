@@ -7,7 +7,7 @@ class Profile extends React.Component {
     return (
       <div className='profile-page'>
         <header className='profile-head'>
-          <div className='edit'><a href='#'>Edit</a></div>
+          <div className='edit'><Link to='#'>Edit</Link></div>
           <div className='profile-header'>
             <div className='profile-pic'>
               <i className='material-icons'>person</i>
