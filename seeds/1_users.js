@@ -3,6 +3,8 @@ exports.seed = function (knex) {
     .then(() => {
       return knex('users').insert([{
         id: 1,
+        first_name: 'Tupac',
+        last_name: 'Shakur',
         email: '2pac@shakur.com',
         hashed_password: '$2a$12$LaKBUi8mCFc/9LiCtvwcvuNIjgaq9LJuy/NO.m4P5.3FP8zA6t2Va',
         created_at: new Date('2016-06-29 14:26:16 UTC'),
