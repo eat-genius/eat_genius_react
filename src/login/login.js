@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { browserHistory } from 'react-router'
 import axios from 'axios'
 
 function validate (email, password) {
@@ -41,14 +42,14 @@ class LoginForm extends Component {
     axios.post('/token', user)
       .then(response => {
         console.log(response)
+        if (response.status === 200) {
+          browserHistory.push('/profile')
+        }
       })
       .catch(error => {
         console.log(error)
+        alert('Unknown Email Or Password')
       })
-    this.setState({
-      email: '',
-      password: ''
-    })
   }
 
   canBeSubmitted () {
@@ -63,7 +64,7 @@ class LoginForm extends Component {
     return (
       <div>
         <form onSubmit={this.handleSubmit}>
-          <label for='email'>Email:</label>
+          <label htmlFor='email'>Email:</label>
           <input
             className={errors.email ? 'error' : ''}
             type='text'
@@ -72,7 +73,7 @@ class LoginForm extends Component {
             onChange={this.handleChange}
             name='email'
         />
-          <label for='password'>Password:</label>
+          <label htmlFor='password'>Password:</label>
           <input
             className={errors.password ? 'error' : ''}
             type='password'

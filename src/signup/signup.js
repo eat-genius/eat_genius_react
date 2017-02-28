@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { browserHistory } from 'react-router'
 import axios from 'axios'
 import './signup.css'
 
@@ -60,10 +61,14 @@ class SignUpForm extends Component {
     axios.post('/users', user)
       .then(response => {
         console.log(response)
+        if (response.status === 200) {
+          browserHistory.push('/profile')
+        }
       })
-      .catch(error => {
-        console.error(error)
-      })
+        .catch(error => {
+          console.log(error)
+          alert(error)
+        })
     this.setState({
       first_name: '',
       last_name: '',
@@ -84,7 +89,7 @@ class SignUpForm extends Component {
     const isDisabled = Object.keys(errors).some(x => errors[x])
     return (
       <form onSubmit={this.handleSubmit}>
-        <label for='first_name'>First Name:</label>
+        <label htmlFor='first_name'>First Name:</label>
         <input
           className={errors.first_name ? 'error' : ''}
           type='text'
@@ -93,7 +98,7 @@ class SignUpForm extends Component {
           onChange={this.handleChange}
           name='first_name'
         />
-        <label for='last_name'>Last Name:</label>
+        <label htmlFor='last_name'>Last Name:</label>
         <input
           className={errors.last_name ? 'error' : ''}
           type='text'
@@ -102,7 +107,7 @@ class SignUpForm extends Component {
           onChange={this.handleChange}
           name='last_name'
         />
-        <label for='email'>Email:</label>
+        <label htmlFor='email'>Email:</label>
         <input
           className={errors.email ? 'error' : ''}
           type='text'
@@ -111,7 +116,7 @@ class SignUpForm extends Component {
           onChange={this.handleChange}
           name='email'
         />
-        <label for='password'>Password:</label>
+        <label htmlFor='password'>Password:</label>
         <input
           className={errors.password ? 'error' : ''}
           type='password'
@@ -120,7 +125,7 @@ class SignUpForm extends Component {
           onChange={this.handleChange}
           name='password'
         />
-        <label for='password_confirm'>Confirm Password:</label>
+        <label htmlFor='password_confirm'>Confirm Password:</label>
         <input
           className={errors.password_confirm ? 'error' : ''}
           type='password'
