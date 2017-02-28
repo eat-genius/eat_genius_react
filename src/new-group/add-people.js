@@ -82,6 +82,7 @@ class AddPeople extends React.Component {
             })}
           </tbody>
         </table>
+        <button onClick={this.createGroup}>Create Group</button>
       </div>
     )
   }
