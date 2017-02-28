@@ -91,15 +91,15 @@ class SignUpForm extends Component {
 
     axios.post('/users', user)
       .then(response => {
-        console.log(response)
         if (response.status === 200) {
+          this.props.updateUser(response.data.id)
           browserHistory.push('/profile')
         }
       })
-        .catch(error => {
-          console.log(error)
-          alert(error)
-        })
+      .catch(error => {
+        console.log(error)
+        alert(error)
+      })
     this.setState({
       first_name: '',
       last_name: '',

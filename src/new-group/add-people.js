@@ -1,5 +1,6 @@
-import React from 'react'
 import axios from 'axios'
+import { browserHistory } from 'react-router'
+import React from 'react'
 import './add-people.css'
 
 class AddPeople extends React.Component {
@@ -54,7 +55,6 @@ class AddPeople extends React.Component {
       search: this.state.group.search,
       people: this.state.group.people
     }
-    console.log(newGroup)
     axios.post('/groups', newGroup)
       .then((res) => {
         console.log('it worked', res.data)
@@ -62,6 +62,7 @@ class AddPeople extends React.Component {
       .catch((err) => {
         console.log('it failed', err)
       })
+    browserHistory.push('/profile')
   }
 
   render () {

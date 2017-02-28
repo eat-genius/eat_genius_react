@@ -1,5 +1,6 @@
+import axios from 'axios'
 import React from 'react'
-import { Link } from 'react-router'
+import { Link, browserHistory } from 'react-router'
 import './navbar.css'
 
 class Navbar extends React.Component {
@@ -12,15 +13,35 @@ class Navbar extends React.Component {
         location: '',
         search: '',
         people: []
-      }
+      },
+      userId: 0
     }
 
     this.updateGroup = this.updateGroup.bind(this)
+    this.updateUser = this.updateUser.bind(this)
+  }
+
+  componentDidMount () {
+    axios.get('/token')
+      .then((res) => {
+        if (res.data) {
+          browserHistory.push('/profile')
+          return
+        }
+
+        return
+      })
   }
 
   updateGroup (newGroup) {
     this.setState({
       group: newGroup
+    })
+  }
+
+  updateUser (newUserId) {
+    this.setState({
+      userId: newUserId
     })
   }
 
@@ -33,7 +54,9 @@ class Navbar extends React.Component {
         </nav>
         {React.cloneElement(this.props.children, {
           group: this.state.group,
-          updateGroup: this.updateGroup
+          updateGroup: this.updateGroup,
+          userId: this.state.userId,
+          updateUser: this.updateUser
         })}
       </div>
     )

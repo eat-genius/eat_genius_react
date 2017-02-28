@@ -24,7 +24,18 @@ const auth = (req, res, next) => {
 router.get('/users', (req, res, next) => {
   knex('users')
     .then((response) => {
-      console.log(response)
+      res.send(response)
+    })
+    .catch((err) => {
+      next(err)
+    })
+})
+
+router.get('/users/id', auth, (req, res, next) => {
+  knex('users')
+    .where('id', req.claim.userId)
+    .first()
+    .then((response) => {
       res.send(response)
     })
     .catch((err) => {
@@ -48,6 +59,7 @@ router.post('/users', (req, res, next) => {
       return knex('users').insert((user), '*')
     })
     .then(array => {
+      user = array[0]
       delete user.hashed_password
 
       const claim = { userId: array[0].id }

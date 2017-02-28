@@ -1,8 +1,33 @@
-import { Link } from 'react-router'
 import React, { Component } from 'react'
+import { Link } from 'react-router'
+import axios from 'axios'
 import './profile.css'
 
 class Profile extends Component {
+  constructor (props) {
+    super(props)
+
+    this.state = {
+      name: '',
+      groups: []
+    }
+  }
+
+  componentDidMount () {
+    axios.get(`/users/id`)
+      .then((res) => {
+        const name = `${res.data.first_name} ${res.data.last_name}`
+        this.setState({ name })
+        return axios.get(`/groups/user`)
+      })
+      .then((response) => {
+        this.setState({ groups: response.data })
+      })
+      .catch((err) => {
+        console.log('it failed', err)
+      })
+  }
+  
   render () {
     return (
       <div className='profile-page'>
@@ -12,7 +37,7 @@ class Profile extends Component {
             <div className='profile-pic'>
               <i className='material-icons'>person</i>
             </div>
-            <div className='profile-name'>First Last</div>
+            <div className='profile-name'>{this.state.name}</div>
           </div>
         </header>
         <main className='profile-main'>
@@ -21,13 +46,11 @@ class Profile extends Component {
               <tr><th className='profile-th'>Groups<Link to='newGroup'><i className='material-icons'>add_circle_outline</i></Link></th></tr>
             </thead>
             <tbody>
-              <tr><td className='profile-td'>Ballard Bombers</td></tr>
-              <tr><td className='profile-td'>Magnolia Magicians</td></tr>
-              <tr><td className='profile-td'>Magnolia Magicians</td></tr>
-              <tr><td className='profile-td'>Capital Hill Captains</td></tr>
-              <tr><td className='profile-td'>Fremont Freaks</td></tr>
-              <tr><td className='profile-td'>Wallingford Walleyes</td></tr>
-              <tr><td className='profile-td'>Queen Anne Queries</td></tr>
+              { this.state.groups.map((group) => {
+                return (
+                  <tr key={group.id}><td className='profile-td'>{group.name}</td></tr>
+                )
+              })}
             </tbody>
           </table>
         </main>
