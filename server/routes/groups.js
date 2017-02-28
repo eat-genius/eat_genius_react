@@ -16,7 +16,7 @@ const auth = (req, res, next) => {
   })
 }
 
-router.post('/groups', (req, res, next) => {
+router.post('/groups', auth, (req, res, next) => {
   const { name, location, search, people } = req.body
 
   knex('groups')
@@ -24,8 +24,8 @@ router.post('/groups', (req, res, next) => {
     .then((group) => {
       return knex('user_groups')
         .insert({
-          user_id: req.claim.id,
-          group_id: group.id
+          user_id: req.claim.userId,
+          group_id: group[0].id
         }, '*')
     })
     .then((userGroup) => {
@@ -35,7 +35,7 @@ router.post('/groups', (req, res, next) => {
           knex('user_groups')
             .insert({
               user_id: member.id,
-              group_id: userGroup.group_id
+              group_id: userGroup[0].group_id
             })
         )
       }

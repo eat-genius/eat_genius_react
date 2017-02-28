@@ -7,24 +7,25 @@ class AddPeople extends React.Component {
     super(props)
 
     this.state = {
-      people: [
-        {id: 1, first_name: 'Paul', last_name: 'Bunyan'},
-        {id: 2, first_name: 'Tom', last_name: 'Sawyer'},
-        {id: 3, first_name: 'Moby', last_name: 'Dick'},
-        {id: 4, first_name: 'Young', last_name: 'Frankenstein'},
-        {id: 5, first_name: 'General', last_name: 'Custer'}
-      ],
-      group: {
-        name: 'Ballard Ballers',
-        location: 'Ballard',
-        search: 'Sports Bar',
-        people: []
-      }
+      people: [],
+      group: this.props.group
     }
 
     this.addMember = this.addMember.bind(this)
     this.removeMember = this.removeMember.bind(this)
     this.createGroup = this.createGroup.bind(this)
+  }
+
+  componentDidMount () {
+    axios.get('/users')
+      .then((res) => {
+        this.setState({
+          people: res.data
+        })
+      })
+      .catch((err) => {
+        console.log('it failed', err)
+      })
   }
 
   addMember (person) {

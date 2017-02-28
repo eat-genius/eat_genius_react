@@ -6,11 +6,27 @@ class NewGroup extends React.Component {
   constructor (props) {
     super(props)
 
+    this.state = {
+      group: this.props.group
+    }
+
+    this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
+  }
+
+  handleChange ({target}) {
+    if (target.name) {
+      const newGroup = this.state.group
+      newGroup[target.name] = target.value
+      this.setState({
+        group: newGroup
+      })
+    }
   }
 
   handleSubmit (event) {
     event.preventDefault()
+    this.props.updateGroup(this.state.group)
     browserHistory.push('addPeople')
   }
 
@@ -22,15 +38,15 @@ class NewGroup extends React.Component {
           <form className='new-group-form'>
             <label>
               Group Name:
-              <input type='text' placeholder='Group Name' />
+              <input type='text' name='name' placeholder='Group Name' onChange={this.handleChange} />
             </label>
             <label>
               Location:
-              <input type='text' placeholder='Location' />
+              <input type='text' name='location' placeholder='Location' onChange={this.handleChange} />
             </label>
             <label>
               Type of Restaurant:
-              <input type='text' placeholder='Search Term' />
+              <input type='text' name='search' placeholder='Search Term' onChange={this.handleChange} />
             </label>
             <input type='submit' onClick={this.handleSubmit} />
           </form>
