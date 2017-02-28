@@ -1,8 +1,7 @@
 
-exports.up = function(knex, Promise) {
-  
-};
+exports.up = knex => knex.schema.createTable('user_groups', (table) => {
+  table.increments()
+  table.timestamps(true, true)
+})
 
-exports.down = function(knex, Promise) {
-  
-};
+exports.down = knex => knex.schema.dropTable('user_groups')

@@ -1,21 +1,12 @@
 const knex = require('../../knex')
-
 const bcrypt = require('bcrypt-as-promised')
-
 const jwt = require('jsonwebtoken')
-
 const boom = require('boom')
-
 const { camelizeKeys, decamelizeKeys } = require('humps')
-
 const express = require('express')
-
 const ev = require('express-validation')
-
 const validations = require('../validations/users')
-
 const router = express.Router()
-
 const app = express()
 
 const auth = (req, res, next) => {
@@ -30,25 +21,25 @@ const auth = (req, res, next) => {
   })
 }
 
-router.post('/users', ev(validations.post), (req, res, next) => {
+router.post('/users', (req, res, next) => {
   let user
-  const { email, password } = req.body
+  const { first_name, last_name, email, password } = req.body
 
+  console.log(req.body)
   knex('users').where('email', email)
     .then(data => {
       if (data.length) {
         throw new Error('email already exists in database')
       }
-
       return bcrypt.hash(password, 12)
     })
-    .then(hashedPassword => {
-      user = { email, hashedPassword }
+    .then(hashed_password => {
+      user = { first_name, last_name, email, hashed_password }
 
-      return knex('users').insert(decamelizeKeys(user), '*')
+      return knex('users').insert((user), '*')
     })
     .then(array => {
-      delete user.hashedPassword
+      delete user.hashed_password
 
       const claim = { userId: array[0].id }
       const token = jwt.sign(claim, process.env.JWT_KEY, {
