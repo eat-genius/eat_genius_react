@@ -1,9 +1,8 @@
 import { Link } from 'react-router'
-import React from 'react'
+import React, { Component } from 'react'
 import './profile.css'
 
-class Profile extends React.Component {
-
+class Profile extends Component {
   render () {
     return (
       <div className='profile-page'>
