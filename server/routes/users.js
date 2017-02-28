@@ -24,8 +24,6 @@ const auth = (req, res, next) => {
 router.post('/users', (req, res, next) => {
   let user
   const { first_name, last_name, email, password } = req.body
-
-  console.log(req.body)
   knex('users').where('email', email)
     .then(data => {
       if (data.length) {

@@ -57,9 +57,6 @@ class SignUpForm extends Component {
       password
     }
 
-    alert(`${first_name} ${last_name}, you signed up with email: ${email} password: ${password}`)
-
-    // const data = JSON.stringify(user)
     axios.post('/users', user)
       .then(response => {
         console.log(response)
@@ -67,6 +64,13 @@ class SignUpForm extends Component {
       .catch(error => {
         console.error(error)
       })
+    this.setState({
+      first_name: '',
+      last_name: '',
+      email: '',
+      password: '',
+      password_confirm: ''
+    })
   }
 
   canBeSubmitted () {
@@ -80,6 +84,7 @@ class SignUpForm extends Component {
     const isDisabled = Object.keys(errors).some(x => errors[x])
     return (
       <form onSubmit={this.handleSubmit}>
+        <label for='first_name'>First Name:</label>
         <input
           className={errors.first_name ? 'error' : ''}
           type='text'
@@ -88,6 +93,7 @@ class SignUpForm extends Component {
           onChange={this.handleChange}
           name='first_name'
         />
+        <label for='last_name'>Last Name:</label>
         <input
           className={errors.last_name ? 'error' : ''}
           type='text'
@@ -96,6 +102,7 @@ class SignUpForm extends Component {
           onChange={this.handleChange}
           name='last_name'
         />
+        <label for='email'>Email:</label>
         <input
           className={errors.email ? 'error' : ''}
           type='text'
@@ -104,6 +111,7 @@ class SignUpForm extends Component {
           onChange={this.handleChange}
           name='email'
         />
+        <label for='password'>Password:</label>
         <input
           className={errors.password ? 'error' : ''}
           type='password'
@@ -112,6 +120,7 @@ class SignUpForm extends Component {
           onChange={this.handleChange}
           name='password'
         />
+        <label for='password_confirm'>Confirm Password:</label>
         <input
           className={errors.password_confirm ? 'error' : ''}
           type='password'

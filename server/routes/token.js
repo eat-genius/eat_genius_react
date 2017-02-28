@@ -29,9 +29,9 @@ router.post('/token', (req, res, next) => {
         throw boom.create(400, 'Bad email or password')
       }
 
-      user = camelizeKeys(row)
+      user = row
 
-      return bcrypt.compare(password, user.hashedPassword)
+      return bcrypt.compare(password, user.hashed_password)
     })
     .then(() => {
       const claim = { userId: user.id }
@@ -45,7 +45,7 @@ router.post('/token', (req, res, next) => {
         secure: router.get('env') === 'production'
       })
 
-      delete user.hashedPassword
+      delete user.hashed_password
 
       res.send(user)
     })

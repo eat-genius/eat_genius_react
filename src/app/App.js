@@ -1,9 +1,10 @@
-import AddPeople from '../new-group/add-people.js'
-import Landing from '../landing/landing.js'
-import Navbar from './navbar.js'
-import NewGroup from '../new-group/new-group.js'
-import Profile from '../profile/profile.js'
-import SignUp from '../signup/signup.js'
+import AddPeople from '../new-group/add-people'
+import Landing from '../landing/landing'
+import Navbar from './navbar'
+import NewGroup from '../new-group/new-group'
+import Profile from '../profile/profile'
+import SignUpForm from '../signup/signup'
+import LoginForm from '../login/login'
 import React, { Component } from 'react'
 import { Router, Route, IndexRoute, browserHistory } from 'react-router'
 import './App.css'
@@ -14,8 +15,8 @@ class App extends Component {
       <Router history={browserHistory}>
         <Route path='/' component={Navbar}>
           <IndexRoute component={Landing} />
-          <Route path='/signup' component={SignUp} />
-          {/* <Route path='/login' component={Login} /> */}
+          <Route path='/signup' component={SignUpForm} />
+          <Route path='/login' component={LoginForm} />
           <Route path='/profile' component={Profile} />
           <Route path='/newGroup' component={NewGroup} />
           <Route path='/addPeople' component={AddPeople} />
