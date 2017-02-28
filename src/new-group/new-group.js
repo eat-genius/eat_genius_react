@@ -11,7 +11,7 @@ class NewGroup extends React.Component {
 
   handleSubmit (event) {
     event.preventDefault
-    browserHistory.push('/addPeople')
+    browserHistory.push('addPeople')
   }
 
   render () {
@@ -32,7 +32,7 @@ class NewGroup extends React.Component {
               Type of Restaurant:
               <input type='text' placeholder='Search Term' />
             </label>
-            <input type='submit' onSubmit={this.handleSubmit} />
+            <input type='submit' onClick={this.handleSubmit} />
           </form>
         </div>
       </div>
