@@ -9,6 +9,7 @@ class Profile extends Component {
 
     this.state = {
       name: '',
+      profileUrl: '',
       groups: []
     }
   }
@@ -17,7 +18,9 @@ class Profile extends Component {
     axios.get(`/users/id`)
       .then((res) => {
         const name = `${res.data.first_name} ${res.data.last_name}`
-        this.setState({ name })
+        const profileUrl = res.data.profile_photo_url
+        this.setState({ name, profileUrl })
+        console.log(this.state.profileUrl)
         return axios.get(`/groups/user`)
       })
       .then((response) => {
@@ -27,7 +30,7 @@ class Profile extends Component {
         console.log('it failed', err)
       })
   }
-  
+
   render () {
     return (
       <div className='profile-page'>
@@ -35,7 +38,8 @@ class Profile extends Component {
           <div className='edit'><Link to='#'>Edit</Link></div>
           <div className='profile-header'>
             <div className='profile-pic'>
-              <i className='material-icons'>person</i>
+              {/* <i className='material-icons'>person</i> */}
+              <img src={this.state.profileUrl}/>
             </div>
             <div className='profile-name'>{this.state.name}</div>
           </div>
