@@ -21,6 +21,17 @@ const auth = (req, res, next) => {
   })
 }
 
+router.get('/users', (req, res, next) => {
+  knex('users')
+    .then((response) => {
+      console.log(response)
+      res.send(response)
+    })
+    .catch((err) => {
+      next(err)
+    })
+})
+
 router.post('/users', (req, res, next) => {
   let user
   const { first_name, last_name, email, password } = req.body
