@@ -16,6 +16,21 @@ const auth = (req, res, next) => {
   })
 }
 
+router.get('/groups/user', auth, (req, res, next) => {
+  knex('user_groups')
+    .select('groups.id', 'groups.name')
+    .innerJoin('groups', 'groups.id', 'user_groups.group_id')
+    .where('user_groups.user_id', req.claim.userId)
+    .then((groups) => {
+      console.log(groups)
+      res.send(groups)
+    })
+    .catch((err) => {
+      console.log('err')
+      next(err)
+    })
+})
+
 router.post('/groups', auth, (req, res, next) => {
   const { name, location, search, people } = req.body
 
@@ -42,7 +57,6 @@ router.post('/groups', auth, (req, res, next) => {
       return Promise.all(promises)
     })
     .then((response) => {
-      console.log(response)
       res.send('It was Successful!')
     })
     .catch((err) => {
