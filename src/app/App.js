@@ -13,8 +13,8 @@ class App extends Component {
           <Route path='/' component={Navbar}>
             <IndexRoute component={Landing} />
             <Route path='/signup' component={SignUp} />
-            {/* <Route path='/login' component={Login} />
-            <Route path='/profile' component={Profile} /> */}
+            {/* <Route path='/login' component={Login} /> */}
+            <Route path='/profile' component={Profile} />
             {/* <Route path='/group' component={Group} /> */}
           </Route>
         </Router>
