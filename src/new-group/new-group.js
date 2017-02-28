@@ -10,7 +10,7 @@ class NewGroup extends React.Component {
   }
 
   handleSubmit (event) {
-    event.preventDefault
+    event.preventDefault()
     browserHistory.push('addPeople')
   }
 

@@ -1,8 +1,16 @@
+exports.up = knex => knex.schema.createTable('user_groups', (table) => {
+  table.increments()
+  table.integer('user_id')
+    .notNullable()
+    .references('users.id')
+    .onDelete('CASCADE')
+    .index()
+  table.integer('group_id')
+    .notNullable()
+    .references('groups.id')
+    .onDelete('CASCADE')
+    .index()
+  table.timestamps(true, true)
+})
 
-exports.up = function(knex, Promise) {
-  
-};
-
-exports.down = function(knex, Promise) {
-  
-};
+exports.down = knex => knex.schema.dropTable('user_groups')

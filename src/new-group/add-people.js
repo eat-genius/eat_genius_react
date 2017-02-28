@@ -1,4 +1,5 @@
 import React from 'react'
+import axios from 'axios'
 import './add-people.css'
 
 class AddPeople extends React.Component {
@@ -20,6 +21,10 @@ class AddPeople extends React.Component {
         people: []
       }
     }
+
+    this.addMember = this.addMember.bind(this)
+    this.removeMember = this.removeMember.bind(this)
+    this.createGroup = this.createGroup.bind(this)
   }
 
   addMember (person) {
@@ -39,6 +44,23 @@ class AddPeople extends React.Component {
       people: newMembers
     }
     this.setState({ group: newGroup })
+  }
+
+  createGroup () {
+    const newGroup = {
+      name: this.state.group.name,
+      location: this.state.group.location,
+      search: this.state.group.search,
+      people: this.state.group.people
+    }
+    console.log(newGroup)
+    axios.post('/groups', newGroup)
+      .then((res) => {
+        console.log('it worked', res.data)
+      })
+      .catch((err) => {
+        console.log('it failed', err)
+      })
   }
 
   render () {
