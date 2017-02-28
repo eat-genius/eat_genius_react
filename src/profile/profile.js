@@ -1,9 +1,9 @@
+import React, { Component } from 'react'
 import { Link } from 'react-router'
-import React from 'react'
 import axios from 'axios'
 import './profile.css'
 
-class Profile extends React.Component {
+class Profile extends Component {
   constructor (props) {
     super(props)
 
@@ -27,7 +27,7 @@ class Profile extends React.Component {
         console.log('it failed', err)
       })
   }
-
+  
   render () {
     return (
       <div className='profile-page'>

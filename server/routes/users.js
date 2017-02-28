@@ -45,7 +45,7 @@ router.get('/users/id', auth, (req, res, next) => {
 
 router.post('/users', (req, res, next) => {
   let user
-  const { first_name, last_name, email, password } = req.body
+  const { first_name, last_name, email, password, profile_photo_url } = req.body
   knex('users').where('email', email)
     .then(data => {
       if (data.length) {
@@ -54,7 +54,7 @@ router.post('/users', (req, res, next) => {
       return bcrypt.hash(password, 12)
     })
     .then(hashed_password => {
-      user = { first_name, last_name, email, hashed_password }
+      user = { first_name, last_name, email, hashed_password, profile_photo_url }
 
       return knex('users').insert((user), '*')
     })
