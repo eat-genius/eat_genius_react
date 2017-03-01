@@ -91,15 +91,15 @@ class SignUpForm extends Component {
 
     axios.post('/users', user)
       .then(response => {
+        console.log(response)
         if (response.status === 200) {
-          this.props.updateUser(response.data.id)
           browserHistory.push('/profile')
         }
       })
-      .catch(error => {
-        console.log(error)
-        alert(error)
-      })
+        .catch(error => {
+          console.log(error)
+          alert(error)
+        })
     this.setState({
       first_name: '',
       last_name: '',
@@ -174,20 +174,20 @@ class SignUpForm extends Component {
                 onDrop={this.onImageDrop.bind(this)}>
                 <p>Drop an image or click to select a file to upload.</p>
               </Dropzone>
-            <div>
-              <div className='FileUpload'>
+              <div>
+                <div className='FileUpload'>
                 ...
               </div>
-              <div>
-                {
+                <div>
+                  {
                   this.state.uploadedFileCloudinaryUrl === '' ? null :
                   <div>
                     <p>{this.state.uploadedFile.name}</p>
                     <img src={this.state.uploadedFileCloudinaryUrl} />
                   </div>
                 }
+                </div>
               </div>
-            </div>
             </div>
           </div>
           <button style={{ marginBottom: '3%' }} disabled={isDisabled}>Sign up</button>
