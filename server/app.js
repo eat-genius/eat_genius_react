@@ -10,8 +10,6 @@ const bodyParser = require('body-parser')
 
 app.disable('x-powered-by')
 
-// const port = process.env.PORT || 8000
-
 if (process.env.NODE_ENV !== 'production') {
   require('dotenv').config()
 }
@@ -44,11 +42,5 @@ app.use((err, _req, res, _next) => {
   console.error(err.stack)
   res.sendStatus(500)
 })
-
-// app.listen(port, () => {
-//   if (app.get('env') !== 'test') {
-//     console.log('Listening on port', port)
-//   }
-// })
 
 module.exports = app
