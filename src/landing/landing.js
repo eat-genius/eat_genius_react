@@ -6,6 +6,8 @@ class Landing extends React.Component {
   render () {
     return (
       <div className={'landing'}>
+        <button type='button' class='btn btn-default navbar-btn'>Sign in</button>
+
         <header className='landing-head'>
           <div className={'header-text'}>
             <div>Can't Decide what to eat?</div>
