@@ -28,7 +28,7 @@ class Profile extends Component {
         this.setState({ groups: response.data })
       })
       .catch((err) => {
-        console.log('it failed', err)
+        console.error(err)
       })
   }
 
@@ -51,8 +51,7 @@ class Profile extends Component {
         <header className='profile-head'>
           <div className='edit'><Link to='#'>Edit</Link></div>
           <div className='profile-header'>
-            <div className='profile-pic'>
-              {/* <i className='material-icons'>person</i> */}
+            <div className='profile-pic' style={{ display: 'flex' }}>
               <img src={this.state.profileUrl} />
             </div>
             <div className='profile-name'>{this.state.name}</div>

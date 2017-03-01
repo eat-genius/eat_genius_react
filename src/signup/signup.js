@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { browserHistory } from 'react-router'
+import { browserHistory, Link } from 'react-router'
 import axios from 'axios'
 import './signup.css'
 import Dropzone from 'react-dropzone'
@@ -91,15 +91,17 @@ class SignUpForm extends Component {
 
     axios.post('/users', user)
       .then(response => {
+        console.log(response)
         if (response.status === 200) {
-          this.props.updateUser(response.data.id)
           browserHistory.push('/profile')
+          // location.reload()
+          this.props.updateLoggedIn(true)
         }
       })
-      .catch(error => {
-        console.log(error)
-        alert(error)
-      })
+        .catch(error => {
+          console.log(error)
+          alert(error)
+        })
     this.setState({
       first_name: '',
       last_name: '',
@@ -120,6 +122,7 @@ class SignUpForm extends Component {
     const isDisabled = Object.keys(errors).some(x => errors[x])
     return (
       <div>
+        <Link to='login'>Already Signed Up? Log In</Link>
         <form onSubmit={this.handleSubmit}>
           <label htmlFor='first_name'>First Name:</label>
           <input
@@ -174,20 +177,20 @@ class SignUpForm extends Component {
                 onDrop={this.onImageDrop.bind(this)}>
                 <p>Drop an image or click to select a file to upload.</p>
               </Dropzone>
-            <div>
-              <div className='FileUpload'>
+              <div>
+                <div className='FileUpload'>
                 ...
               </div>
-              <div>
-                {
+                <div>
+                  {
                   this.state.uploadedFileCloudinaryUrl === '' ? null :
                   <div>
                     <p>{this.state.uploadedFile.name}</p>
                     <img src={this.state.uploadedFileCloudinaryUrl} />
                   </div>
                 }
+                </div>
               </div>
-            </div>
             </div>
           </div>
           <button style={{ marginBottom: '3%' }} disabled={isDisabled}>Sign up</button>
