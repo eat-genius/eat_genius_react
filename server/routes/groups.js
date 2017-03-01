@@ -18,7 +18,6 @@ const auth = (req, res, next) => {
 
 // this grabs all the users from one group
 router.get('/group/users/:id', auth, (req, res, next) => {
-  console.log(req.params.id)
   knex('user_groups')
     .select('users.id', 'users.first_name', 'users.last_name', 'users.profile_photo_url')
     .innerJoin('users', 'users.id', 'user_groups.user_id')
@@ -38,7 +37,6 @@ router.get('/groups/user', auth, (req, res, next) => {
     .innerJoin('groups', 'groups.id', 'user_groups.group_id')
     .where('user_groups.user_id', req.claim.userId)
     .then((groups) => {
-      console.log(groups)
       res.send(groups)
     })
     .catch((err) => {
@@ -48,6 +46,7 @@ router.get('/groups/user', auth, (req, res, next) => {
 })
 
 router.post('/groups', auth, (req, res, next) => {
+  let groupId
   const { name, location, search, people } = req.body
 
   knex('groups')
@@ -60,6 +59,7 @@ router.post('/groups', auth, (req, res, next) => {
         }, '*')
     })
     .then((userGroup) => {
+      groupId = userGroup[0].group_id
       const promises = []
       for (const member of people) {
         promises.push(
@@ -73,7 +73,7 @@ router.post('/groups', auth, (req, res, next) => {
       return Promise.all(promises)
     })
     .then((response) => {
-      res.send('It was Successful!')
+      res.send([groupId])
     })
     .catch((err) => {
       next(err)
