@@ -1,4 +1,4 @@
-* {
+/** {
   box-sizing: border-box;
 }
 
@@ -53,4 +53,4 @@ form button:disabled {
   background-color: #dbf99f;
   color: #333;
 }
-.error { border: 1px solid red; }
+.error { border: 1px solid red; }*/
