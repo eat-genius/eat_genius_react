@@ -32,6 +32,9 @@ class AddPeople extends React.Component {
   addMember (person) {
     const newMember = this.state.people.filter(ele => ele.id === person.id)[0]
     const newGroup = this.state.group
+    if (!newGroup.hasOwnProperty('people')) {
+      newGroup.people = []
+    }
     newGroup.people.push(newMember)
     this.setState({ group: newGroup })
   }

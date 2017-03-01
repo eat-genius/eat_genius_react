@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router'
+import { Link, browserHistory } from 'react-router'
 import axios from 'axios'
 import './profile.css'
 
@@ -12,15 +12,16 @@ class Profile extends Component {
       profileUrl: '',
       groups: []
     }
+
+    this.handleClick = this.handleClick.bind(this)
   }
 
   componentDidMount () {
-    axios.get(`/users/id`)
+    axios.get('/users/id')
       .then((res) => {
         const name = `${res.data.first_name} ${res.data.last_name}`
         const profileUrl = res.data.profile_photo_url
         this.setState({ name, profileUrl })
-        console.log(this.state.profileUrl)
         return axios.get(`/groups/user`)
       })
       .then((response) => {
@@ -31,6 +32,19 @@ class Profile extends Component {
       })
   }
 
+  handleClick (group) {
+    const newGroup = group
+    axios.get(`/group/users/${group.id}`)
+      .then((res) => {
+        newGroup.people = res.data
+        this.props.updateGroup(newGroup)
+      })
+      .catch((err) => {
+        console.log('itfailed', err)
+      })
+    browserHistory.push('/group')
+  }
+
   render () {
     return (
       <div className='profile-page'>
@@ -39,7 +53,7 @@ class Profile extends Component {
           <div className='profile-header'>
             <div className='profile-pic'>
               {/* <i className='material-icons'>person</i> */}
-              <img src={this.state.profileUrl}/>
+              <img src={this.state.profileUrl} />
             </div>
             <div className='profile-name'>{this.state.name}</div>
           </div>
@@ -52,7 +66,7 @@ class Profile extends Component {
             <tbody>
               { this.state.groups.map((group) => {
                 return (
-                  <tr key={group.id}><td className='profile-td'>{group.name}</td></tr>
+                  <tr key={group.id} onClick={() => this.handleClick(group)}><td className='profile-td'>{group.name}</td></tr>
                 )
               })}
             </tbody>

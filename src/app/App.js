@@ -1,4 +1,7 @@
 import AddPeople from '../new-group/add-people'
+import Group from '../group/group'
+import GroupPage from '../group/group-page'
+import GroupVote from '../group/group-vote'
 import Landing from '../landing/landing'
 import Navbar from './navbar'
 import NewGroup from '../new-group/new-group'
@@ -20,6 +23,10 @@ class App extends Component {
           <Route path='/profile' component={Profile} />
           <Route path='/newGroup' component={NewGroup} />
           <Route path='/addPeople' component={AddPeople} />
+          <Route path='/group' component={Group}>
+            <IndexRoute component={GroupPage} />
+            <Route path='/group/vote' component={GroupVote} />
+          </Route>
         </Route>
       </Router>
     )
