@@ -16,9 +16,25 @@ const auth = (req, res, next) => {
   })
 }
 
+// this grabs all the users from one group
+router.get('/group/users/:id', auth, (req, res, next) => {
+  console.log(req.params.id)
+  knex('user_groups')
+    .select('users.id', 'users.first_name', 'users.last_name', 'users.profile_photo_url')
+    .innerJoin('users', 'users.id', 'user_groups.user_id')
+    .where('user_groups.group_id', req.params.id)
+    .then((users) => {
+      res.send(users)
+    })
+    .catch((err) => {
+      next(err)
+    })
+})
+
+// this grabs all the groups for one user
 router.get('/groups/user', auth, (req, res, next) => {
   knex('user_groups')
-    .select('groups.id', 'groups.name')
+    .select('groups.id', 'groups.name', 'groups.location', 'groups.search')
     .innerJoin('groups', 'groups.id', 'user_groups.group_id')
     .where('user_groups.user_id', req.claim.userId)
     .then((groups) => {

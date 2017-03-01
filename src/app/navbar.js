@@ -9,6 +9,7 @@ class Navbar extends React.Component {
 
     this.state = {
       group: {
+        id: 0,
         name: '',
         location: '',
         search: '',
@@ -48,6 +49,7 @@ class Navbar extends React.Component {
     this.setState({
       group: newGroup
     })
+    // console.log(this.state.group)
   }
 
   updateUser (newUserId) {
