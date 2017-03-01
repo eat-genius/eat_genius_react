@@ -73,7 +73,7 @@ class LoginForm extends Component {
             <div className='row'>
               <div className='col-xs-6'>
                 <div className='well'>
-                  <form id='loginForm' method='POST'>
+                  <form onSubmit={this.handleSubmit} id='loginForm'>
                     <div className='form-group'>
                       <label for='email' className='control-label'>Email</label>
                       <input className={errors.email ? 'error form-control' : 'form-control'} type='text' placeholder='Enter email' value={this.state.email} onChange={this.handleChange} name='email' />
