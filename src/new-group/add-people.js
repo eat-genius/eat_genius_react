@@ -60,7 +60,22 @@ class AddPeople extends React.Component {
     }
     axios.post('/groups', newGroup)
       .then((res) => {
-        console.log('it worked', res.data)
+        newGroup.id = res.data[0]
+        return axios.post('/yelp', {
+          groupLoc: newGroup.location,
+          search: newGroup.search
+        })
+      })
+      .then((response) => {
+        const restaurantsObj = { restaurants: response.data }
+        for (const restaurant of restaurantsObj.restaurants) {
+          restaurant.group_id = newGroup.id
+          restaurant.postal_code = Number.parseInt(restaurant.postal_code)
+        }
+        return axios.post('/restaurants', restaurantsObj)
+      })
+      .then((res) => {
+        console.log('it worked', res)
       })
       .catch((err) => {
         console.log('it failed', err)

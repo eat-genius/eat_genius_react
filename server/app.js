@@ -5,6 +5,8 @@ const path = require('path')
 const token = require('./routes/token')
 const users = require('./routes/users')
 const groups = require('./routes/groups')
+const restaurants = require('./routes/restaurants')
+const yelp = require('./routes/yelp')
 const cookieParser = require('cookie-parser')
 const bodyParser = require('body-parser')
 
@@ -22,6 +24,8 @@ app.use(bodyParser.json())
 app.use(token)
 app.use(users)
 app.use(groups)
+app.use(restaurants)
+app.use(yelp)
 
 app.get('*', (req, res) => {
   res.sendFile(path.resolve(__dirname, '..', 'build', 'index.html'))

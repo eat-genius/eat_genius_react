@@ -38,11 +38,11 @@ class Profile extends Component {
       .then((res) => {
         newGroup.people = res.data
         this.props.updateGroup(newGroup)
+        browserHistory.push('/group')
       })
       .catch((err) => {
         console.log('itfailed', err)
       })
-    browserHistory.push('/group')
   }
 
   render () {
