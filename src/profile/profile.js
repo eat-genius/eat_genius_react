@@ -38,7 +38,7 @@ class Profile extends Component {
           <div className='edit'><Link to='#'>Edit</Link></div>
           <div className='profile-header'>
             <div className='profile-pic' style={{ display: 'flex' }}>
-              {/* <i className='material-icons'>person</i> */}
+            
               <img src={this.state.profileUrl} />
             </div>
             <div className='profile-name'>{this.state.name}</div>
