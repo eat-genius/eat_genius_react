@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { browserHistory } from 'react-router'
+import { browserHistory, Link } from 'react-router'
 import axios from 'axios'
 import './signup.css'
 import Dropzone from 'react-dropzone'
@@ -94,6 +94,8 @@ class SignUpForm extends Component {
         console.log(response)
         if (response.status === 200) {
           browserHistory.push('/profile')
+          // location.reload()
+          this.props.updateLoggedIn(true)
         }
       })
         .catch(error => {
@@ -120,6 +122,7 @@ class SignUpForm extends Component {
     const isDisabled = Object.keys(errors).some(x => errors[x])
     return (
       <div>
+        <Link to='login'>Already Signed Up? Log In</Link>
         <form onSubmit={this.handleSubmit}>
           <label htmlFor='first_name'>First Name:</label>
           <input

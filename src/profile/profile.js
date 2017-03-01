@@ -20,14 +20,13 @@ class Profile extends Component {
         const name = `${res.data.first_name} ${res.data.last_name}`
         const profileUrl = res.data.profile_photo_url
         this.setState({ name, profileUrl })
-        console.log(this.state.profileUrl)
         return axios.get(`/groups/user`)
       })
       .then((response) => {
         this.setState({ groups: response.data })
       })
       .catch((err) => {
-        console.log('it failed', err)
+        console.error(err)
       })
   }
 
