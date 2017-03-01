@@ -67,7 +67,7 @@ class LoginForm extends Component {
         <div className='modal-content'>
           <div className='modal-header'>
             <h4 className='modal-title' id='myModalLabel'>Login to <b>Eat Genius</b></h4> or go back to our
-            <Link to='/'>main site</Link>.
+            <Link to='/'> main site</Link>.
           </div>
           <div className='modal-body'>
             <div className='row'>
