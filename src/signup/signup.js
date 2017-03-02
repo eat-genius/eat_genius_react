@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { browserHistory, Link } from 'react-router'
+import { browserHistory } from 'react-router'
 import axios from 'axios'
 import './signup.css'
 import Dropzone from 'react-dropzone'
@@ -80,7 +80,7 @@ class SignUpForm extends Component {
       return
     }
 
-    const { first_name, last_name, email, password, password_confirm, uploadedFileCloudinaryUrl } = this.state
+    const { first_name, last_name, email, password, uploadedFileCloudinaryUrl } = this.state
     const user = {
       first_name,
       last_name,
@@ -170,11 +170,12 @@ class SignUpForm extends Component {
                           ...
                         </div>
                         <div>
-                          { this.state.uploadedFileCloudinaryUrl === '' ? null :
-                          <div>
+                          { this.state.uploadedFileCloudinaryUrl === ''
+                          ? null
+                          : <div>
                             <p>{this.state.uploadedFile.name}</p>
                             <img className='img-thumbnail' style={{marginBottom: '2%'}} src={this.state.uploadedFileCloudinaryUrl}
-                            role='presentation'
+                              role='presentation'
                           />
                           </div>
                           }

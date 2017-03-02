@@ -48,7 +48,8 @@ router.get('/restaurants/user/:groupId', auth, (req, res, next) => {
           votes
           LEFT JOIN user_groups ON votes.user_group_id = user_groups.id
         WHERE
-        user_groups.user_id = ${req.claim.userId})
+        user_groups.user_id = ${req.claim.userId}
+        AND user_groups.group_id = ${req.params.groupId})
     `)
     .then((restaurants) => {
       res.send(restaurants)

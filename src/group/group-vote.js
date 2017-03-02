@@ -7,16 +7,10 @@ class GroupVote extends Component {
     super(props)
 
     this.state = {
-      restaurants: [{
-        id: 0,
-        name: '',
-        img_url: '',
-        rating: 0,
-        description: ''
-      }]
+      restaurants: false
     }
 
-    // this.handleVote = this.handleVote.bind(this)
+    this.handleVote = this.handleVote.bind(this)
   }
 
   componentDidMount () {
@@ -25,10 +19,11 @@ class GroupVote extends Component {
         this.setState({
           restaurants: res.data.rows
         })
-        console.log(this.state.restaurants[0])
       })
-      .catch((err) => {
-        console.log('it failed', err)
+      .catch(() => {
+        this.setState({
+          restaurants: false
+        })
       })
   }
 
@@ -37,35 +32,46 @@ class GroupVote extends Component {
       .then((res) => {
         return axios.post('/votes', {
           restaurant_id: this.state.restaurants[0].id,
-          user_groups: res.data[0].id,
+          user_group_id: res.data[0].id,
           acceptance: bool
         })
       })
       .then((res) => {
         console.log('it worked', res)
+        if (this.state.restaurants.length === 1) {
+          this.setState({
+            restaurants: false
+          })
+        } else {
+          const newRestaurants = this.state.restaurants.slice(1)
+          this.setState({
+            restaurants: newRestaurants
+          })
+        }
       })
       .catch((err) => {
         console.log(err)
       })
-    const newRestaurants = this.state.restaurants.slice(1)
-    this.setState({
-      restaurants: newRestaurants
-    })
   }
 
   render () {
     return (
       <div className='group-vote'>
-        <div>
-          <div>{this.state.restaurants[0].name}</div>
-          <div>IMG: {this.state.restaurants[0].img_url}</div>
-          <div>rating: {this.state.restaurants[0].rating}</div>
-          <div>description: {this.state.restaurants[0].description}</div>
-        </div>
-        <div>
-          <div onClick={() => this.handleVote(true)}>Yes</div>
-          <div onClick={() => this.handleVote(false)}>No</div>
-        </div>
+        {this.state.restaurants
+          ? <div>
+            <div>
+              <div>{this.state.restaurants[0].name}</div>
+              <div>IMG: {this.state.restaurants[0].img_url}</div>
+              <div>rating: {this.state.restaurants[0].rating}</div>
+              <div>description: {this.state.restaurants[0].description}</div>
+            </div>
+            <div>
+              <div onClick={() => this.handleVote(true)}>Yes</div>
+              <div onClick={() => this.handleVote(false)}>No</div>
+            </div>
+          </div>
+          : <div>There are no restaurants left to vote on</div>
+        }
       </div>
     )
   }
