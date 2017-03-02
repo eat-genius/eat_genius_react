@@ -56,7 +56,8 @@ router.get('/votes/:groupId', auth, (req, res, next) => {
 })
 
 router.post('/votes', auth, (req, res, next) => {
-  // voted
+  console.log(req.body)
+  res.send(req.body)
 })
 
 module.exports = router

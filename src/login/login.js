@@ -42,7 +42,6 @@ class LoginForm extends Component {
     }
     axios.post('/token', user)
       .then(response => {
-        console.log(response)
         if (response.status === 200) {
           browserHistory.push('/profile')
         }
