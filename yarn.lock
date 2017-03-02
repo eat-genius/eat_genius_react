@@ -4824,6 +4824,13 @@ react-scripts@0.9.2:
   optionalDependencies:
     fsevents "1.0.17"
 
+react-swipe@^5.0.6:
+  version "5.0.6"
+  resolved "https://registry.yarnpkg.com/react-swipe/-/react-swipe-5.0.6.tgz#0ac5889b18e5aade8ed5c5f1ba1c491a4acec912"
+  dependencies:
+    object-assign "^4.1.0"
+    swipe-js-iso "^2.0.3"
+
 react@^15.4.2:
   version "15.4.2"
   resolved "https://registry.yarnpkg.com/react/-/react-15.4.2.tgz#41f7991b26185392ba9bae96c8889e7e018397ef"
@@ -5521,6 +5528,10 @@ svgo@^0.7.0:
     mkdirp "~0.5.1"
     sax "~1.2.1"
     whet.extend "~0.9.9"
+
+swipe-js-iso@^2.0.3:
+  version "2.0.3"
+  resolved "https://registry.yarnpkg.com/swipe-js-iso/-/swipe-js-iso-2.0.3.tgz#76892ca4fc2928f384ac042739a25f7afe6fcf74"
 
 symbol-tree@^3.2.1:
   version "3.2.2"

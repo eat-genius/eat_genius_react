@@ -56,8 +56,17 @@ router.get('/votes/:groupId', auth, (req, res, next) => {
 })
 
 router.post('/votes', auth, (req, res, next) => {
-  console.log(req.body)
-  res.send(req.body)
+  const { restaurant_id, user_group_id, acceptance } = req.body
+
+  knex('votes')
+    .insert({ restaurant_id, user_group_id, acceptance }, '*')
+    .then((response) => {
+      console.log(response)
+      res.send(response)
+    })
+    .catch((err) => {
+      next(err)
+    })
 })
 
 module.exports = router
