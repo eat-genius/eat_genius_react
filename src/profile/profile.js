@@ -130,49 +130,6 @@ class Profile extends Component {
                       </tbody>
                     </table>
                   </div>
-
-                  {/* <div className='col-md-4'>
-                    <div className='thumbnail'>
-                      <img alt='300x200' src='http://lorempixel.com/600/200/food' />
-                      <div className='caption'>
-                        <h3>
-      								Sushi Kappo Tamura
-      							</h3>
-                        <p>
-                          Cocker Spaniel who loves treats.
-                        </p>
-                        <p />
-                      </div>
-                    </div>
-                  </div> */}
-                  {/* <div className='col-md-4'>
-                    <div className='thumbnail'>
-                      <img alt='300x200' src='http://lorempixel.com/600/200/food' />
-                      <div className='caption'>
-                        <h3>
-      								Cantinetta
-      							</h3>
-                        <p>
-                          Is just another friendly dog.
-                        </p>
-                        <p />
-                      </div>
-                    </div>
-                  </div> */}
-                  {/* <div className='col-md-4'>
-                    <div className='thumbnail'>
-                      <img alt='300x200' src='http://lorempixel.com/600/200/food' />
-                      <div className='caption'>
-                        <h3>
-      								Luc
-      							</h3>
-                        <p>
-                          Loves catnip and naps. Not fond of children.
-                        </p>
-                        <p />
-                      </div>
-                    </div>
-                  </div> */}
                 </div>
               </div>
             </div>
