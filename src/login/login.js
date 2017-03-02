@@ -44,6 +44,7 @@ class LoginForm extends Component {
       .then(response => {
         if (response.status === 200) {
           browserHistory.push('/profile')
+          this.props.updateLoggedIn(true)
         }
       })
       .catch(error => {
@@ -98,7 +99,7 @@ class LoginForm extends Component {
                 </div>
               </div>
               <div className='col-xs-6'>
-                <p className='lead'>Register now htmlFor <span className='text-success'>FREE</span></p>
+                <p className='lead'>Register now for <span className='text-success'>FREE</span></p>
                 <ul className='list-unstyled' style={{lineHeight: '2'}}>
                   <li><span className='fa fa-check text-success' /> Create your profile</li>
                   <li><span className='fa fa-check text-success' /> Create groups with friends</li>
