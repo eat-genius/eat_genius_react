@@ -27,6 +27,37 @@ router.get('/restaurants/:groupId', auth, (req, res, next) => {
     })
 })
 
+router.get('/restaurants/user/:groupId', auth, (req, res, next) => {
+  console.log(req.params.groupId)
+  console.log(req.claim.userId)
+  knex.raw(`
+    SELECT
+      restaurants.id,
+      restaurants.name,
+      restaurants.rating,
+      restaurants.description,
+      restaurants.img_url
+    FROM
+      restaurants
+    WHERE
+      restaurants.group_id = ${req.params.groupId}
+      AND restaurants.id NOT IN (
+        SELECT
+          votes.restaurant_id
+        FROM
+          votes
+          LEFT JOIN user_groups ON votes.user_group_id = user_groups.id
+        WHERE
+        user_groups.user_id = ${req.claim.userId})
+    `)
+    .then((restaurants) => {
+      res.send(restaurants)
+    })
+    .catch((err) => {
+      next(err)
+    })
+})
+
 router.post('/restaurants', auth, (req, res, next) => {
   const { restaurants } = req.body
   const promises = []
