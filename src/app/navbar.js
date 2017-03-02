@@ -97,7 +97,9 @@ class Navbar extends React.Component {
             </div>
           </div>
         </nav>
-        {React.cloneElement(this.props.children, { group: this.state.group, updateGroup: this.updateGroup, userId: this.state.userId, updateUser: this.updateUser, isLoggedIn: this.state.isLoggedIn, updateLoggedIn: this.updateLoggedIn })}
+        <div className='container'>
+          {React.cloneElement(this.props.children, { group: this.state.group, updateGroup: this.updateGroup, userId: this.state.userId, updateUser: this.updateUser, isLoggedIn: this.state.isLoggedIn, updateLoggedIn: this.updateLoggedIn })}
+        </div>
       </div>
     )
   }

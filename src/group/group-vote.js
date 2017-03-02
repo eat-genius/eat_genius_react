@@ -56,22 +56,26 @@ class GroupVote extends Component {
 
   render () {
     return (
-      <div className='group-vote'>
-        {this.state.restaurants
-          ? <div>
-            <div>
-              <div>{this.state.restaurants[0].name}</div>
-              <div>IMG: {this.state.restaurants[0].img_url}</div>
-              <div>rating: {this.state.restaurants[0].rating}</div>
-              <div>description: {this.state.restaurants[0].description}</div>
+      <div className='col-sm-12 container-fluid'>
+        <div className='row container-fluid'>
+          {this.state.restaurants
+            ? <div className='col-sm-12 col-md-6 col-md-offset-3' style={{border: 'solid black 2px', marginTop: '10', marginBottom: '10', height: '400'}}>
+              <div className='container-fluid' style={{height: '350'}}>
+                <div className='row'>
+                  <div className='col-sm-7'>{this.state.restaurants[0].name}</div>
+                  <img className='col-sm-5' src={this.state.restaurants[0].img_url} />
+                </div>
+                <div className='row'>rating: {this.state.restaurants[0].rating}</div>
+                <div className='row'>description: {this.state.restaurants[0].description}</div>
+              </div>
+              <div className='container-fluid row' style={{display: 'flex', justifyContent: 'space-around'}}>
+                <button className='btn btn-success' onClick={() => this.handleVote(true)}>Yes</button>
+                <button className='btn btn-danger' onClick={() => this.handleVote(false)}>No</button>
+              </div>
             </div>
-            <div>
-              <div onClick={() => this.handleVote(true)}>Yes</div>
-              <div onClick={() => this.handleVote(false)}>No</div>
-            </div>
-          </div>
-          : <div>There are no restaurants left to vote on</div>
-        }
+            : <div>There are no restaurants left to vote on</div>
+          }
+        </div>
       </div>
     )
   }
