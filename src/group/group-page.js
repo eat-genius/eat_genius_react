@@ -12,22 +12,64 @@ class GroupPage extends Component {
     }
 
     this.getRestaurants = this.getRestaurants.bind(this)
+    this.getVotes = this.getVotes.bind(this)
+    this.createRanking = this.createRanking.bind(this)
+    this.addRestaurantsVotes = this.addRestaurantsVotes.bind(this)
   }
 
   getRestaurants () {
     axios.get(`/restaurants/${this.props.group.id}`)
       .then((res) => {
-        this.setState({
-          restaurants: res.data
-        })
+        return res.data
       })
       .catch((err) => {
         console.log('it failed', err)
       })
   }
 
+  getVotes () {
+    axios.get(`/votes/${this.props.group.id}`)
+      .then((res) => {
+        console.log(res.data.rows)
+        return res.data.rows
+      })
+      .catch((err) => {
+        console.log('it failed', err)
+      })
+  }
+
+  createRanking (votes) {
+    const ranking = []
+    for (const vote of votes) {
+      if ((vote.total_votes / this.props.group.people.length) > 0.6) {
+        vote.percent = (vote.yes_votes / vote.total_votes)
+        ranking.push(vote)
+      }
+    }
+    ranking.sort(function (a, b) {
+      return b - a
+    })
+    return ranking
+  }
+
+  addRestaurantsVotes (rankings, restaurants) {
+    restaurants.filter((restaurant) => {
+      for (const ranking of rankings) {
+        if (ranking.restaurant_id === restaurant.id) {
+          restaurant.vote = ranking
+          return (true)
+        }
+      }
+      return (false)
+    })
+    return restaurants
+  }
+
   componentDidMount () {
-    this.getRestaurants()
+    const votes = this.getVotes()
+    const restaurants = this.getRestaurants()
+    const ranking = this.createRanking(votes)
+    const rankedRestaurants = this.addRestaurantsVotes(ranking, restaurants)
   }
 
   render () {
