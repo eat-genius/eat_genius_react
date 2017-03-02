@@ -40,8 +40,8 @@ router.post('/yelp', (req, res, next) => {
 
     res.send(restaurants)
   })
-  .catch(function (err) {
-    console.error(err)
+  .catch(() => {
+    res.send([])
   })
 })
 

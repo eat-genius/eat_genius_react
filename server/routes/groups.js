@@ -40,7 +40,6 @@ router.get('/groups/user', auth, (req, res, next) => {
       res.send(groups)
     })
     .catch((err) => {
-      console.log('err')
       next(err)
     })
 })
