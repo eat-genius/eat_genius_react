@@ -100,7 +100,6 @@ class SignUpForm extends Component {
       })
         .catch(error => {
           console.log(error)
-          alert(error)
         })
     this.setState({
       first_name: '',
@@ -174,7 +173,7 @@ class SignUpForm extends Component {
                           <div>
                             <p>{this.state.uploadedFile.name}</p>
                             <img className='img-thumbnail' style={{marginBottom: '2%'}} src={this.state.uploadedFileCloudinaryUrl}
-                            role='presentation'
+                              role='presentation'
                           />
                           </div>
                           }

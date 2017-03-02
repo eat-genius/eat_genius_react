@@ -75,12 +75,12 @@ class LoginForm extends Component {
                 <div className='well'>
                   <form onSubmit={this.handleSubmit} id='loginForm'>
                     <div className='form-group'>
-                      <label for='email' className='control-label'>Email</label>
+                      <label htmlFor='email' className='control-label'>Email</label>
                       <input className={errors.email ? 'error form-control' : 'form-control'} type='text' placeholder='Enter email' value={this.state.email} onChange={this.handleChange} name='email' />
                       <span className='help-block' />
                     </div>
                     <div className='form-group'>
-                      <label for='password' className='control-label'>Password</label>
+                      <label htmlFor='password' className='control-label'>Password</label>
                       <input className={errors.password ? 'error form-control' : 'form-control'} type='password' placeholder='Enter password' value={this.state.password} onChange={this.handleChange} name='password' />
 
                       <span className='help-block' />
@@ -99,12 +99,12 @@ class LoginForm extends Component {
                 </div>
               </div>
               <div className='col-xs-6'>
-                <p className='lead'>Register now for <span className='text-success'>FREE</span></p>
+                <p className='lead'>Register now htmlFor <span className='text-success'>FREE</span></p>
                 <ul className='list-unstyled' style={{lineHeight: '2'}}>
                   <li><span className='fa fa-check text-success' /> Create your profile</li>
                   <li><span className='fa fa-check text-success' /> Create groups with friends</li>
                   <li><span className='fa fa-check text-success' /> Save your favorites</li>
-                  <li><span className='fa fa-check text-success' /> Search for restaurants</li>
+                  <li><span className='fa fa-check text-success' /> Search htmlFor restaurants</li>
                   <li><span className='fa fa-check text-success' /> Dining discounts <small>(restrictions apply)</small></li>
                   <li><span className='fa fa-check text-success' /> Never wonder where to eat again!</li>
                 </ul>

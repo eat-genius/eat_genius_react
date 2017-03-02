@@ -22,7 +22,7 @@ class Landing extends React.Component {
             </div>
             <div className='col-md-4'>
               <h2>Developers</h2>
-              <p>This full-stack progressive web application was built in just a few days by two talented developers: <b><a style={{textDecoration: 'none'}} href='https://github.com/michaelfriedman' target='_blank'>Michael Friedman</a></b> & <b><a style={{textDecoration: 'none'}} href='https://github.com/christopher-metz' target='_blank'>Chris Metz</a></b>. We employed the following technologies in this appliication: React, Node, PostgreSQL, Knex, and Express.</p>
+              <p>This full-stack progressive web application was built in just a few days by two talented developers: <b><a style={{textDecoration: 'none'}} href='https://github.com/michaelfriedman' target='_blank'>Michael Friedman</a></b> & <b><a style={{textDecoration: 'none'}} href='https://github.com/christopher-metz' target='_blank'>Chris Metz</a></b>. We employed the following technologies in this application: React, Node, PostgreSQL, Knex, and Express.</p>
               <p><a className='btn btn-default' href='#' role='button'>View details »</a></p>
             </div>
             <div className='col-md-4'>

@@ -10,7 +10,10 @@ class Profile extends Component {
     this.state = {
       name: '',
       profileUrl: '',
-      groups: []
+      groups: [],
+      joinedOn: '',
+      email: '',
+      userId: ''
     }
 
     this.handleClick = this.handleClick.bind(this)
@@ -21,7 +24,10 @@ class Profile extends Component {
       .then((res) => {
         const name = `${res.data.first_name} ${res.data.last_name}`
         const profileUrl = res.data.profile_photo_url
-        this.setState({ name, profileUrl })
+        const email = res.data.email
+        const joinedOn = res.data.created_at.slice(0, 10)
+        const userId = res.data.id
+        this.setState({ name, profileUrl, joinedOn, email, userId })
         return axios.get(`/groups/user`)
       })
       .then((response) => {
@@ -47,30 +53,139 @@ class Profile extends Component {
 
   render () {
     return (
-      <div className='profile-page'>
-        <header className='profile-head'>
-          <div className='edit'><Link to='#'>Edit</Link></div>
-          <div className='profile-header'>
-            <div className='profile-pic' style={{ display: 'flex' }}>
-              <img src={this.state.profileUrl} role='presentation' />
-            </div>
-            <div className='profile-name'>{this.state.name}</div>
+      <div className='container target'>
+        <div className='row'>
+          <div className='col-sm-10'>
+            <h1>{this.state.name}</h1>
+            <button type='button' className='btn btn-info' style={{marginBottom: '1%'}}>Send me a message</button>
+            <br />
           </div>
-        </header>
-        <main className='profile-main'>
-          <table className='profile-table'>
-            <thead>
-              <tr><th className='profile-th'>Groups<Link to='newGroup'><i className='material-icons'>add_circle_outline</i></Link></th></tr>
-            </thead>
-            <tbody>
-              { this.state.groups.map((group) => {
-                return (
-                  <tr key={group.id} onClick={() => this.handleClick(group)}><td className='profile-td'>{group.name}</td></tr>
-                )
-              })}
-            </tbody>
-          </table>
-        </main>
+          <div className='col-sm-2'>
+            <img title='profile image' className='img-thumbnail img-responsive' src={this.state.profileUrl} />
+          </div>
+        </div>
+        <br />
+        <div className='row'>
+          <div className='col-sm-3'>
+            {/* <!--left col--> */}
+            <ul className='list-group'>
+              <li className='list-group-item text-muted'>Profile</li>
+              <li className='list-group-item text-right'><span className='pull-left'><strong>Joined</strong></span> {this.state.joinedOn}</li>
+              <li className='list-group-item text-right'><span className='pull-left'><strong>User ID</strong></span> {this.state.userId}</li>
+              <li className='list-group-item text-right'><span className='pull-left'><strong>Real name</strong></span> {this.state.name}
+              </li>
+              <li className='list-group-item text-right'><span className='pull-left'><strong>Email</strong></span> {this.state.email}</li>
+              <li className='list-group-item text-right'><span className='pull-left'><strong>City: </strong></span> Seattle
+              </li>
+            </ul>
+
+            <ul className='list-group'>
+              <li className='list-group-item text-muted'>Activity <i className='fa fa-dashboard fa-1x' />
+              </li>
+              <li className='list-group-item text-right'><span className='pull-left'><strong>Shares</strong></span> 125</li>
+              <li className='list-group-item text-right'><span className='pull-left'><strong>Likes</strong></span> 13</li>
+              <li className='list-group-item text-right'><span className='pull-left'><strong>Posts</strong></span> 37</li>
+              <li className='list-group-item text-right'><span className='pull-left'><strong>Followers</strong></span> 78</li>
+            </ul>
+            <div className='panel panel-default'>
+              <div className='panel-heading'>Social Media</div>
+              <div className='panel-body'> <i className='fa fa-facebook fa-2x' /> <i className='fa fa-github fa-2x' />
+                <i className='fa fa-twitter fa-2x' /> <i className='fa fa-pinterest fa-2x' /> <i className='fa fa-google-plus fa-2x' />
+              </div>
+            </div>
+          </div>
+          {/*
+          <!--/col-3--> */}
+          <div className='col-sm-9'>
+            <div className='panel panel-default'>
+              <div className='panel-heading'>{this.state.name}'s Bio</div>
+              <div className='panel-body'> A long description about me.
+              </div>
+            </div>
+            <div className='panel panel-default target'>
+              <div className='panel-heading'>{this.state.name}'s Groups</div>
+              <div className='panel-body'>
+                <div className='row'>
+
+                  <div className='btn-toolbar'>
+                    <Link to='newGroup' className='btn btn-primary btn-sm pull-right' style={{ marginBottom: '1%'}}>New Group</Link>
+                  </div>
+                  <div className='well'>
+                    <table className='table'>
+                      <thead>
+                        <tr>
+                          <th>#</th>
+                          <th>Group Name</th>
+                          <th>Searching For</th>
+                          <th>Location</th>
+                          <th style={{ width: '36px' }} />
+                        </tr>
+                      </thead>
+                      <tbody>
+                        { this.state.groups.map((group) => {
+                          return (
+                            <tr key={group.id} onClick={() => this.handleClick(group)}><td>{group.id}</td><td className='profile-td'>{group.name}</td><td>{group.search}</td><td>{group.location}</td></tr>
+                          )
+                        })}
+                      </tbody>
+                    </table>
+                  </div>
+
+                  {/* <div className='col-md-4'>
+                    <div className='thumbnail'>
+                      <img alt='300x200' src='http://lorempixel.com/600/200/food' />
+                      <div className='caption'>
+                        <h3>
+      								Sushi Kappo Tamura
+      							</h3>
+                        <p>
+                          Cocker Spaniel who loves treats.
+                        </p>
+                        <p />
+                      </div>
+                    </div>
+                  </div> */}
+                  {/* <div className='col-md-4'>
+                    <div className='thumbnail'>
+                      <img alt='300x200' src='http://lorempixel.com/600/200/food' />
+                      <div className='caption'>
+                        <h3>
+      								Cantinetta
+      							</h3>
+                        <p>
+                          Is just another friendly dog.
+                        </p>
+                        <p />
+                      </div>
+                    </div>
+                  </div> */}
+                  {/* <div className='col-md-4'>
+                    <div className='thumbnail'>
+                      <img alt='300x200' src='http://lorempixel.com/600/200/food' />
+                      <div className='caption'>
+                        <h3>
+      								Luc
+      							</h3>
+                        <p>
+                          Loves catnip and naps. Not fond of children.
+                        </p>
+                        <p />
+                      </div>
+                    </div>
+                  </div> */}
+                </div>
+              </div>
+            </div>
+          </div>
+          <div id='push' />
+        </div>
+        <footer id='footer'>
+          <div className='row-fluid'>
+            <div className='span3'>
+              <span className='pull-right'>©Copyright 2017 Eat Genius, Inc. </span>
+            </div>
+          </div>
+        </footer>
       </div>
     )
   }
