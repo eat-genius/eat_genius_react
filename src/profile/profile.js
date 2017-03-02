@@ -88,14 +88,13 @@ class Profile extends Component {
               <li className='list-group-item text-right'><span className='pull-left'><strong>Followers</strong></span> 78</li>
             </ul>
             <div className='panel panel-default'>
-              <div className='panel-heading'>Social Media</div>
-              <div className='panel-body'> <i className='fa fa-facebook fa-2x' /> <i className='fa fa-github fa-2x' />
-                <i className='fa fa-twitter fa-2x' /> <i className='fa fa-pinterest fa-2x' /> <i className='fa fa-google-plus fa-2x' />
+              <div className='panel-heading' >Social Media Links</div>
+              <div className='panel-body' style={{ display: 'flex', justifyContent: 'space-between'}}>
+                <i className='fa fa-facebook fa-2x text-center hover' /> <i className='fa fa-github fa-2x text-center' />
+                <i className='fa fa-twitter fa-2x text-center' /> <i className='fa fa-pinterest fa-2x' /> <i className='fa fa-google-plus fa-2x text-center' />
               </div>
             </div>
           </div>
-          {/*
-          <!--/col-3--> */}
           <div className='col-sm-9'>
             <div className='panel panel-default'>
               <div className='panel-heading'>{this.state.name}'s Bio</div>
@@ -106,9 +105,8 @@ class Profile extends Component {
               <div className='panel-heading'>{this.state.name}'s Groups</div>
               <div className='panel-body'>
                 <div className='row'>
-
                   <div className='btn-toolbar'>
-                    <Link to='newGroup' className='btn btn-primary btn-sm pull-right' style={{ marginBottom: '1%'}}>New Group</Link>
+                    <Link to='newGroup' className='btn btn-primary btn-sm pull-right' style={{ marginBottom: '1%', marginRight: '1%' }}>New Group</Link>
                   </div>
                   <div className='well'>
                     <table className='table'>
