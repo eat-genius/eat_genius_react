@@ -64,30 +64,34 @@ class GroupPage extends Component {
 
   render () {
     return (
-      <div className='group-page'>
-        <div className='group-page-name'>{this.props.group.name}</div>
-        <div className='group-page-people'>
+      <div className='col-sm-12 container-fluid'>
+        <div className='container-fluid text-center'>{this.props.group.name}</div>
+        <div className='row container-fluid' style={{display: 'flex', justifyContent: 'center', borderBottom: 'solid black 2px'}}>
           {this.props.group.people.map((person) => {
             return (
-              <div key={person.id} className='group-page-person'>
-                <img src={person.profile_photo_url} className='group-page-img' alt='img' />
-                <div>{person.first_name}</div>
+              <div key={person.id} className='col-sm-1 group-page-person'>
+                <img src={person.profile_photo_url} alt='img' className='img-responsive img-circle' />
+                <div className='text-center'>{person.first_name}</div>
               </div>
             )
           })}
         </div>
-        <div className='group-page-results'>
-          <div className='group-page-places'>
-            {this.state.restaurants.map((restaurant) => {
-              return (
-                <div key={restaurant.id} className='group-page-place'>
-                  <div>{restaurant.name}</div>
-                  <div>Votes: {restaurant.vote.yes_votes}/{restaurant.vote.total_votes}</div>
-                </div>
-              )
-            })}
+        <div className='container-fluid row'>
+          <div className='col-sm-3 container-fluid' style={{borderRight: 'solid black 2px'}}>
+            <table className='table table-striped'>
+              <tbody>
+                {this.state.restaurants.map((restaurant) => {
+                  return (
+                    <tr key={restaurant.id} className='row container-fluid'>
+                      <td className='col-sm-6'>{restaurant.name}</td>
+                      <td className='col-sm-6'>Votes: {restaurant.vote.yes_votes}/{restaurant.vote.total_votes}</td>
+                    </tr>
+                  )
+                })}
+              </tbody>
+            </table>
           </div>
-          <div className='group-page-map'>Map</div>
+          <div className='col-sm-9' style={{height: '100%'}}>Map</div>
         </div>
       </div>
     )
