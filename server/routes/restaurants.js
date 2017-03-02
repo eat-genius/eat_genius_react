@@ -28,8 +28,6 @@ router.get('/restaurants/:groupId', auth, (req, res, next) => {
 })
 
 router.get('/restaurants/user/:groupId', auth, (req, res, next) => {
-  console.log(req.params.groupId)
-  console.log(req.claim.userId)
   knex.raw(`
     SELECT
       restaurants.id,

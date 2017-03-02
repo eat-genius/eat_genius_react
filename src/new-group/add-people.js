@@ -67,6 +67,10 @@ class AddPeople extends React.Component {
         })
       })
       .then((response) => {
+        if (response.data.length === 0) {
+          throw new Error('Your search terms returned no results')
+        }
+        // console.log('still in then')
         const restaurantsObj = { restaurants: response.data }
         for (const restaurant of restaurantsObj.restaurants) {
           restaurant.group_id = newGroup.id
@@ -78,7 +82,7 @@ class AddPeople extends React.Component {
         console.log('it worked', res)
       })
       .catch((err) => {
-        console.log('it failed', err)
+        console.log(err)
       })
     browserHistory.push('/profile')
   }

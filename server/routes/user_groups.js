@@ -21,7 +21,6 @@ router.get('/user_groups/:groupId', auth, (req, res, next) => {
     .where('user_id', req.claim.userId)
     .where('group_id', req.params.groupId)
     .then((response) => {
-      console.log(response)
       res.send(response)
     })
     .catch((err) => {

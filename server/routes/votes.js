@@ -47,7 +47,6 @@ router.get('/votes/:groupId', auth, (req, res, next) => {
       restaurants.group_id = ${req.params.groupId}
   `)
     .then((response) => {
-      console.log(response)
       res.send(response)
     })
     .catch((err) => {
@@ -61,7 +60,6 @@ router.post('/votes', auth, (req, res, next) => {
   knex('votes')
     .insert({ restaurant_id, user_group_id, acceptance }, '*')
     .then((response) => {
-      console.log(response)
       res.send(response)
     })
     .catch((err) => {
