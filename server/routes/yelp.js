@@ -33,6 +33,7 @@ router.post('/yelp', (req, res, next) => {
         city: place.location.city,
         state_code: place.location.state_code,
         postal_code: place.location.postal_code,
+        url: place.url,
         yelp_id: place.id
       }
       restaurants.push(tempObj)
