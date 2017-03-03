@@ -22,7 +22,7 @@ class GroupPage extends Component {
         vote.percent = (vote.yes_votes / vote.total_votes)
         ranking.push(vote)
       } else {
-        vote.percent = 0
+        vote.percent = ((vote.yes_votes / vote.total_votes) * 0.5)
         ranking.push(vote)
       }
     }
