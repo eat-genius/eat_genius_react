@@ -109,7 +109,7 @@ class LoginForm extends Component {
                   <li><span className='fa fa-check text-success' /> Never wonder where to eat again!</li>
                 </ul>
                 <p>
-                  <Link to='signup' className='btn btn-info btn-block'>Yes please, register now!</Link>
+                  <Link to='signup' className='btn btn-info btn-block'>Register</Link>
                 </p>
               </div>
             </div>
