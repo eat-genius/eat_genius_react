@@ -34,7 +34,8 @@ router.get('/restaurants/user/:groupId', auth, (req, res, next) => {
       restaurants.name,
       restaurants.rating,
       restaurants.description,
-      restaurants.img_url
+      restaurants.img_url,
+      restaurants.url
     FROM
       restaurants
     WHERE
@@ -62,10 +63,10 @@ router.post('/restaurants', auth, (req, res, next) => {
   const promises = []
 
   for (const restaurant of restaurants) {
-    const { name, img_url, rating, description, address, city, state_code, postal_code, yelp_id, group_id } = restaurant
+    const { name, img_url, rating, description, address, city, state_code, postal_code, url, yelp_id, group_id } = restaurant
     promises.push(
       knex('restaurants')
-        .insert({ name, img_url, rating, description, address, city, state_code, postal_code, yelp_id, group_id }, '*')
+        .insert({ name, img_url, rating, description, address, city, state_code, postal_code, url, yelp_id, group_id }, '*')
     )
   }
 

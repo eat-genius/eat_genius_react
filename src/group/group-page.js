@@ -31,14 +31,31 @@ class GroupPage extends Component {
 
   addRestaurantsVotes (rankings, restaurants) {
     // We are filtering where every case passes. Should be a map.
-    let newRestaurants = restaurants.filter((restaurant) => {
+    // let newRestaurants = restaurants.filter((restaurant) => {
+    //   for (const ranking of rankings) {
+    //     if (ranking.restaurant_id === restaurant.id) {
+    //       restaurant.vote = ranking
+    //       return (true)
+    //     }
+    //   }
+    //   return (false)
+    // })
+    let newRestaurants = restaurants.map((restaurant) => {
+      let added = false
       for (const ranking of rankings) {
         if (ranking.restaurant_id === restaurant.id) {
           restaurant.vote = ranking
-          return (true)
+          added = true
         }
       }
-      return (false)
+      if (!added) {
+        restaurant.vote = {
+          restaurant_id: restaurant.id,
+          yes_votes: 0,
+          total_votes: 0
+        }
+      }
+      return restaurant
     })
     newRestaurants = newRestaurants.sort(function (a, b) {
       return b.vote.percent - a.vote.percent
@@ -81,21 +98,32 @@ class GroupPage extends Component {
           })}
         </div>
         <div className='container-fluid row'>
-          <div className='col-sm-12 col-md-3 container-fluid'>
+          <div className='col-sm-12 col-md-5 container-fluid'>
             <table className='table table-striped'>
               <tbody>
                 {this.state.restaurants.map((restaurant) => {
                   return (
                     <tr key={restaurant.id} className='row container-fluid'>
-                      <td className='col-sm-6'>{restaurant.name}</td>
-                      <td className='col-sm-6'>Votes: {restaurant.vote.yes_votes}/{restaurant.vote.total_votes}</td>
+                      <td>
+                        <a href={restaurant.url}>{restaurant.name}</a>
+                        <div>Yelp Score: {restaurant.rating}</div>
+                      </td>
+                      <td>
+                        <div>
+                          Votes: {restaurant.vote.yes_votes}/{restaurant.vote.total_votes}
+                        </div>
+                      </td>
+                      <td>
+                        <div>{restaurant.address}</div>
+                        <div>{restaurant.city}, {restaurant.state_code}</div>
+                      </td>
                     </tr>
                   )
                 })}
               </tbody>
             </table>
           </div>
-          <div className='col-sm-12 col-md-9' style={{height: '100%'}}>Map</div>
+          <div className='col-sm-12 col-md-7' style={{height: '100%'}}>Map</div>
         </div>
       </div>
     )

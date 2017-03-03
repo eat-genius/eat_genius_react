@@ -8,6 +8,7 @@ exports.up = knex => knex.schema.createTable('restaurants', (table) => {
   table.string('city').notNullable().defaultTo('')
   table.string('state_code').notNullable().defaultTo('')
   table.integer('postal_code').notNullable().defaultTo(0)
+  table.string('url').notNullable().defaultTo('')
   table.string('yelp_id').notNullable().defaultTo('')
   table.integer('group_id')
     .notNullable()

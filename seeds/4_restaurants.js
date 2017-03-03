@@ -12,6 +12,7 @@ exports.seed = function (knex) {
           city: 'Seattle',
           state_code: 'WA',
           postal_code: 98122,
+          url: 'https://www.yelp.com/biz/fog%C3%B3n-cocina-mexicana-seattle-2?adjust_creative=hSoA-h_BmJSHiibeQa55Dw&utm_campaign=yelp_api&utm_medium=api_v2_business&utm_source=hSoA-h_BmJSHiibeQa55Dw',
           yelp_id: 'fogón-cocina-mexicana-seattle-2',
           group_id: 1
         },
@@ -25,6 +26,7 @@ exports.seed = function (knex) {
           city: 'Seattle',
           state_code: 'WA',
           postal_code: 98107,
+          url: 'https://www.yelp.com/biz/asadero-ballard-seattle?adjust_creative=hSoA-h_BmJSHiibeQa55Dw&utm_campaign=yelp_api&utm_medium=api_v2_business&utm_source=hSoA-h_BmJSHiibeQa55Dw',
           yelp_id: 'asadero-ballard-seattle',
           group_id: 1
         },
@@ -38,6 +40,7 @@ exports.seed = function (knex) {
           city: 'Seattle',
           state_code: 'WA',
           postal_code: 98109,
+          url: 'https://www.yelp.com/biz/tacos-chukis-seattle-5?adjust_creative=hSoA-h_BmJSHiibeQa55Dw&utm_campaign=yelp_api&utm_medium=api_v2_business&utm_source=hSoA-h_BmJSHiibeQa55Dw',
           yelp_id: 'tacos-chukis-seattle-5',
           group_id: 1
         },
@@ -51,6 +54,7 @@ exports.seed = function (knex) {
           city: 'Seattle',
           state_code: 'WA',
           postal_code: 98121,
+          url: 'https://www.yelp.com/biz/villa-escondida-seattle-3?adjust_creative=hSoA-h_BmJSHiibeQa55Dw&utm_campaign=yelp_api&utm_medium=api_v2_business&utm_source=hSoA-h_BmJSHiibeQa55Dw',
           yelp_id: 'villa-escondida-seattle-3',
           group_id: 1
         },
@@ -64,6 +68,7 @@ exports.seed = function (knex) {
           city: 'Seattle',
           state_code: 'WA',
           postal_code: 98102,
+          url: 'https://www.yelp.com/biz/tacos-chukis-seattle?adjust_creative=hSoA-h_BmJSHiibeQa55Dw&utm_campaign=yelp_api&utm_medium=api_v2_business&utm_source=hSoA-h_BmJSHiibeQa55Dw',
           yelp_id: 'tacos-chukis-seattle',
           group_id: 1
         },
@@ -77,6 +82,7 @@ exports.seed = function (knex) {
           city: 'Seattle',
           state_code: 'WA',
           postal_code: 98104,
+          url: 'https://www.yelp.com/biz/casco-antiguo-seattle?adjust_creative=hSoA-h_BmJSHiibeQa55Dw&utm_campaign=yelp_api&utm_medium=api_v2_business&utm_source=hSoA-h_BmJSHiibeQa55Dw',
           yelp_id: 'casco-antiguo-seattle',
           group_id: 1
         },
@@ -90,6 +96,7 @@ exports.seed = function (knex) {
           city: 'Seattle',
           state_code: 'WA',
           postal_code: 98101,
+          url: 'https://www.yelp.com/biz/la-cocina-oaxaquena-seattle?adjust_creative=hSoA-h_BmJSHiibeQa55Dw&utm_campaign=yelp_api&utm_medium=api_v2_business&utm_source=hSoA-h_BmJSHiibeQa55Dw',
           yelp_id: 'la-cocina-oaxaquena-seattle',
           group_id: 1
         },
@@ -103,6 +110,7 @@ exports.seed = function (knex) {
           city: 'Seattle',
           state_code: 'WA',
           postal_code: 98101,
+          url: 'https://www.yelp.com/biz/el-borracho-seattle?adjust_creative=hSoA-h_BmJSHiibeQa55Dw&utm_campaign=yelp_api&utm_medium=api_v2_business&utm_source=hSoA-h_BmJSHiibeQa55Dw',
           yelp_id: 'el-borracho-seattle',
           group_id: 1
         },
@@ -116,6 +124,7 @@ exports.seed = function (knex) {
           city: 'Seattle',
           state_code: 'WA',
           postal_code: 98103,
+          url: 'https://www.yelp.com/biz/el-legendario-mexican-restaurant-seattle?adjust_creative=hSoA-h_BmJSHiibeQa55Dw&utm_campaign=yelp_api&utm_medium=api_v2_business&utm_source=hSoA-h_BmJSHiibeQa55Dw',
           yelp_id: 'el-legendario-mexican-restaurant-seattle',
           group_id: 1
         },
@@ -129,6 +138,7 @@ exports.seed = function (knex) {
           city: 'Seattle',
           state_code: 'WA',
           postal_code: 98121,
+          url: 'https://www.yelp.com/biz/taqueria-cantina-seattle?adjust_creative=hSoA-h_BmJSHiibeQa55Dw&utm_campaign=yelp_api&utm_medium=api_v2_business&utm_source=hSoA-h_BmJSHiibeQa55Dw',
           yelp_id: 'taqueria-cantina-seattle',
           group_id: 1
         },
@@ -142,6 +152,7 @@ exports.seed = function (knex) {
           city: 'Seattle',
           state_code: 'WA',
           postal_code: 98108,
+          url: 'https://www.yelp.com/biz/fonda-la-catrina-seattle?adjust_creative=hSoA-h_BmJSHiibeQa55Dw&utm_campaign=yelp_api&utm_medium=api_v2_business&utm_source=hSoA-h_BmJSHiibeQa55Dw',
           yelp_id: 'fonda-la-catrina-seattle',
           group_id: 1
         },
@@ -155,6 +166,7 @@ exports.seed = function (knex) {
           city: 'Seattle',
           state_code: 'WA',
           postal_code: 98107,
+          url: 'https://www.yelp.com/biz/la-carta-de-oaxaca-seattle?adjust_creative=hSoA-h_BmJSHiibeQa55Dw&utm_campaign=yelp_api&utm_medium=api_v2_business&utm_source=hSoA-h_BmJSHiibeQa55Dw',
           yelp_id: 'la-carta-de-oaxaca-seattle',
           group_id: 1
         },
@@ -168,6 +180,7 @@ exports.seed = function (knex) {
           city: 'Seattle',
           state_code: 'WA',
           postal_code: 98103,
+          url: 'https://www.yelp.com/biz/luna-azul-seattle?adjust_creative=hSoA-h_BmJSHiibeQa55Dw&utm_campaign=yelp_api&utm_medium=api_v2_business&utm_source=hSoA-h_BmJSHiibeQa55Dw',
           yelp_id: 'luna-azul-seattle',
           group_id: 1
         },
@@ -181,6 +194,7 @@ exports.seed = function (knex) {
           city: 'Seattle',
           state_code: 'WA',
           postal_code: 98109,
+          url: 'https://www.yelp.com/biz/plaza-garibaldi-seattle?adjust_creative=hSoA-h_BmJSHiibeQa55Dw&utm_campaign=yelp_api&utm_medium=api_v2_business&utm_source=hSoA-h_BmJSHiibeQa55Dw',
           yelp_id: 'plaza-garibaldi-seattle',
           group_id: 1
         },
@@ -194,6 +208,7 @@ exports.seed = function (knex) {
           city: 'Seattle',
           state_code: 'WA',
           postal_code: 98107,
+          url: 'https://www.yelp.com/biz/gracia-seattle?adjust_creative=hSoA-h_BmJSHiibeQa55Dw&utm_campaign=yelp_api&utm_medium=api_v2_business&utm_source=hSoA-h_BmJSHiibeQa55Dw',
           yelp_id: 'gracia-seattle',
           group_id: 1
         },
@@ -207,6 +222,7 @@ exports.seed = function (knex) {
           city: 'Seattle',
           state_code: 'WA',
           postal_code: 98109,
+          url: 'https://www.yelp.com/biz/mezcaleria-oaxaca-seattle?adjust_creative=hSoA-h_BmJSHiibeQa55Dw&utm_campaign=yelp_api&utm_medium=api_v2_business&utm_source=hSoA-h_BmJSHiibeQa55Dw',
           yelp_id: 'mezcaleria-oaxaca-seattle',
           group_id: 1
         },
@@ -220,6 +236,7 @@ exports.seed = function (knex) {
           city: 'Seattle',
           state_code: 'WA',
           postal_code: 98133,
+          url: 'https://www.yelp.com/biz/la-antigua-casa-maria-seattle?adjust_creative=hSoA-h_BmJSHiibeQa55Dw&utm_campaign=yelp_api&utm_medium=api_v2_business&utm_source=hSoA-h_BmJSHiibeQa55Dw',
           yelp_id: 'la-antigua-casa-maria-seattle',
           group_id: 1
         },
@@ -233,6 +250,7 @@ exports.seed = function (knex) {
           city: 'Seattle',
           state_code: 'WA',
           postal_code: 98108,
+          url: 'https://www.yelp.com/biz/cafetal-quilombo-seattle?adjust_creative=hSoA-h_BmJSHiibeQa55Dw&utm_campaign=yelp_api&utm_medium=api_v2_business&utm_source=hSoA-h_BmJSHiibeQa55Dw',
           yelp_id: 'cafetal-quilombo-seattle',
           group_id: 1
         },
@@ -246,6 +264,7 @@ exports.seed = function (knex) {
           city: 'Seattle',
           state_code: 'WA',
           postal_code: 98103,
+          url: 'https://www.yelp.com/biz/pecado-bueno-seattle-6?adjust_creative=hSoA-h_BmJSHiibeQa55Dw&utm_campaign=yelp_api&utm_medium=api_v2_business&utm_source=hSoA-h_BmJSHiibeQa55Dw',
           yelp_id: 'pecado-bueno-seattle-6',
           group_id: 1
         },
@@ -259,6 +278,7 @@ exports.seed = function (knex) {
           city: 'Seattle',
           state_code: 'WA',
           postal_code: 98107,
+          url: 'https://www.yelp.com/biz/el-cami%C3%B3n-seattle-7?adjust_creative=hSoA-h_BmJSHiibeQa55Dw&utm_campaign=yelp_api&utm_medium=api_v2_business&utm_source=hSoA-h_BmJSHiibeQa55Dw',
           yelp_id: 'el-camión-seattle-7',
           group_id: 1
         }
