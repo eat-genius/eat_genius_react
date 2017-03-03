@@ -6,6 +6,17 @@ class Landing extends React.Component {
   render () {
     return (
       <div>
+        <div className='container'>
+          {
+            this.props.isLoggedIn === false
+            ? null
+            : <ol className='breadcrumb'>
+              <li className='active'>Home</li>
+              <li><Link to='profile'>Profile</Link></li>
+            </ol>
+          }
+          
+        </div>
         <div className='jumbotron' style={{backgroundImage: 'url(http://res.cloudinary.com/dk5dqve4y/image/upload/c_scale,w_1201/v1488398667/bg_s2qojr.jpg)'}}>
           <div className='container'>
             <h1>Eat like a genius.</h1>

@@ -104,7 +104,7 @@ class LoginForm extends Component {
                   <li><span className='fa fa-check text-success' /> Create your profile</li>
                   <li><span className='fa fa-check text-success' /> Create groups with friends</li>
                   <li><span className='fa fa-check text-success' /> Save your favorites</li>
-                  <li><span className='fa fa-check text-success' /> Search htmlFor restaurants</li>
+                  <li><span className='fa fa-check text-success' /> Search for restaurants</li>
                   <li><span className='fa fa-check text-success' /> Dining discounts <small>(restrictions apply)</small></li>
                   <li><span className='fa fa-check text-success' /> Never wonder where to eat again!</li>
                 </ul>
