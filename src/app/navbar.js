@@ -86,19 +86,8 @@ class Navbar extends React.Component {
               <ul className='nav navbar-nav' />
               <ul className='nav navbar-nav navbar-right'>
                 { this.state.isLoggedIn
-                  ? <li className='dropdown'>
-                    <a
-                      className='dropdown-toggle'
-                      data-toggle='dropdown'
-                      role='button'
-                      aria-haspopup='true'
-                      aria-expanded='false'>
-                      Menu<span className='caret' />
-                    </a>
-                    <ul className='dropdown-menu'>
-                      <li><Link to='profile'>Profile</Link></li>
-                      <li><Link to='/' onClick={this.handleSignout}>Sign Out</Link></li>
-                    </ul>
+                  ? <li className='active'>
+                    <Link to='/' onClick={this.handleSignout}>Sign Out</Link>
                   </li>
                 : <li>
                   <Link to='login'>Sign Up / Log In</Link>
@@ -108,10 +97,10 @@ class Navbar extends React.Component {
             </div>
           </div>
         </nav>
-        <div className='container'>
-          {React.cloneElement(this.props.children, { group: this.state.group, updateGroup: this.updateGroup, userId: this.state.userId, updateUser: this.updateUser, isLoggedIn: this.state.isLoggedIn, updateLoggedIn: this.updateLoggedIn })}
-        </div>
+        {/* <div className='container'> */}
+        {React.cloneElement(this.props.children, { group: this.state.group, updateGroup: this.updateGroup, userId: this.state.userId, updateUser: this.updateUser, isLoggedIn: this.state.isLoggedIn, updateLoggedIn: this.updateLoggedIn })}
       </div>
+      // </div>
     )
   }
 }
