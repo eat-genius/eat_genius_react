@@ -21,12 +21,16 @@ class GroupPage extends Component {
       if ((vote.total_votes / this.props.group.people.length) > 0.6) {
         vote.percent = (vote.yes_votes / vote.total_votes)
         ranking.push(vote)
+      } else {
+        vote.percent = 0
+        ranking.push(vote)
       }
     }
     return ranking
   }
 
   addRestaurantsVotes (rankings, restaurants) {
+    // We are filtering where every case passes. Should be a map.
     let newRestaurants = restaurants.filter((restaurant) => {
       for (const ranking of rankings) {
         if (ranking.restaurant_id === restaurant.id) {
@@ -77,7 +81,7 @@ class GroupPage extends Component {
           })}
         </div>
         <div className='container-fluid row'>
-          <div className='col-sm-3 container-fluid' style={{borderRight: 'solid black 2px'}}>
+          <div className='col-sm-12 col-md-3 container-fluid'>
             <table className='table table-striped'>
               <tbody>
                 {this.state.restaurants.map((restaurant) => {
@@ -91,7 +95,7 @@ class GroupPage extends Component {
               </tbody>
             </table>
           </div>
-          <div className='col-sm-9' style={{height: '100%'}}>Map</div>
+          <div className='col-sm-12 col-md-9' style={{height: '100%'}}>Map</div>
         </div>
       </div>
     )

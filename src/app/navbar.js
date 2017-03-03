@@ -86,8 +86,19 @@ class Navbar extends React.Component {
               <ul className='nav navbar-nav' />
               <ul className='nav navbar-nav navbar-right'>
                 { this.state.isLoggedIn
-                  ? <li className='active'>
-                    <Link to='/' onClick={this.handleSignout}>Sign Out</Link>
+                  ? <li className='dropdown'>
+                    <a
+                      className='dropdown-toggle'
+                      data-toggle='dropdown'
+                      role='button'
+                      aria-haspopup='true'
+                      aria-expanded='false'>
+                      Menu<span className='caret' />
+                    </a>
+                    <ul className='dropdown-menu'>
+                      <li><Link to='profile'>Profile</Link></li>
+                      <li><Link to='/' onClick={this.handleSignout}>Sign Out</Link></li>
+                    </ul>
                   </li>
                 : <li>
                   <Link to='login'>Sign Up / Log In</Link>
