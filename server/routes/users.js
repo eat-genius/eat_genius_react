@@ -21,8 +21,9 @@ const auth = (req, res, next) => {
   })
 }
 
-router.get('/users', (req, res, next) => {
+router.get('/users', auth, (req, res, next) => {
   knex('users')
+    .whereNot('id', req.claim.userId)
     .then((response) => {
       res.send(response)
     })
