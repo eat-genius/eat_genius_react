@@ -9,11 +9,16 @@ class AddPeople extends React.Component {
 
     this.state = {
       people: [],
-      group: this.props.group
+      group: this.props.group,
+      searchTerm: '',
+      dropDownValue: 'first_name'
     }
 
     this.addMember = this.addMember.bind(this)
     this.removeMember = this.removeMember.bind(this)
+    this.onSearchTermChange = this.onSearchTermChange.bind(this)
+    this.onDropDownChange = this.onDropDownChange.bind(this)
+    this.isSearched = this.isSearched.bind(this)
     this.createGroup = this.createGroup.bind(this)
   }
 
@@ -49,6 +54,20 @@ class AddPeople extends React.Component {
       people: newMembers
     }
     this.setState({ group: newGroup })
+  }
+
+  onDropDownChange (event) {
+    this.setState({dropDownValue: event.target.value})
+  }
+
+  onSearchTermChange (event) {
+    this.setState({ searchTerm: event.target.value })
+  }
+
+  isSearched (searchTerm, dropDownValue) {
+    return (item) => {
+      return !searchTerm || item[dropDownValue].toLowerCase().includes(searchTerm.toLowerCase())
+    }
   }
 
   createGroup () {
@@ -90,15 +109,6 @@ class AddPeople extends React.Component {
   render () {
     return (
       <div className='container'>
-        <div className='section'>
-          {/* <div className='container'>
-            <div className='row'>
-              <div className='col-md-12 well'>
-                <button className='btn btn-primary' onClick={this.createGroup}>Create Group</button>
-              </div>
-            </div>
-          </div> */}
-        </div>
         <div className='col-md-12'>
           <table className='table table-hover table-striped'>
             <thead>
@@ -125,11 +135,20 @@ class AddPeople extends React.Component {
         <div className='section'>
           <div className='container'>
             <div className='row'>
+              <div className='col-md-6 col-md-offset-3'>
+                <input onChange={this.onSearchTermChange} />
+                <select onChange={this.onDropDownChange}>
+                  <option value='first_name' defaultValue>First Name</option>
+                  <option value='last_name'>Last Name</option>
+                </select>
+              </div>
+            </div>
+            <div className='row'>
               <div className='col-md-12'>
                 <table className='table table-hover table-striped'>
                   <thead><th colSpan='3' className='text-center'>Add Your Friends to Your Group</th></thead>
                   <tbody>
-                    { this.state.people.map((person) => {
+                    { this.state.people.filter(this.isSearched(this.state.searchTerm, this.state.dropDownValue)).map((person) => {
                       console.log(person)
                       return (
                         <tr key={person.id}>
@@ -146,76 +165,6 @@ class AddPeople extends React.Component {
 
                   </tbody>
                 </table>
-
-              </div>
-            </div>
-            <div class='row' />
-          </div>
-        </div>
-        <div className='fade modal' id='usuario'>
-          <div className='modal-dialog'>
-            <div className='modal-content'>
-              <div className='modal-header'>
-                <button type='button' className='close' data-dismiss='modal' aria-hidden='true'>×</button>
-                <h2 className='modal-title' id='myModalLabel'>Nuevo Usuario</h2>
-              </div>
-              <div className='modal-body'>
-                <form className='form-horizontal'>
-                  <fieldset>
-
-                    <div className='form-group'>
-                      <label className='col-md-4 control-label' for='prependedtext'>Usuario</label>
-                      <div className='col-md-5'>
-                        <div className='input-group'>
-                          <span className='input-group-addon'>@</span>
-                          <input id='prependedtext' name='prependedtext' className='form-control' placeholder='Nombre de usuario' type='text' required='' />
-                        </div>
-                      </div>
-                    </div>
-                    <div className='form-group'>
-                      <label className='col-md-4 control-label' for='nombre'>Nombre</label>
-                      <div className='col-md-5'>
-                        <div className='input-group'>
-                          <span className='input-group-addon'>
-                            <i className='fa fa-user' />
-                          </span>
-                          <input id='nombre' name='nombre' className='form-control' placeholder='Nombre Completo' type='text' required='' />
-                        </div>
-                      </div>
-                    </div>
-                    <div className='form-group'>
-                      <label className='col-md-4 control-label' for='email'>e-mail</label>
-                      <div className='col-md-5'>
-                        <div className='input-group'>
-                          <input id='email' name='email' className='form-control' placeholder='Correo Electrónico' type='email' required='' />
-                          <span className='input-group-addon'>
-                            <i className='fa fa-envelope' />
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-                    <div className='form-group'>
-                      <label className='col-md-4 control-label' for='departamento'>Departamento</label>
-                      <div className='col-md-5'>
-                        <select id='departamento' name='departamento' className='form-control'>
-                          <option value='1'>Sistemas</option>
-                          <option value='2'>Ama de Llaves</option>
-                          <option value='3'>Recursos Humanos</option>
-                          <option value='4'>Contraloría</option>
-                          <option value='5'>Gerencia</option>
-                        </select>
-                      </div>
-                    </div>
-                    <div className='form-group'>
-                      <label className='col-md-4 control-label' for='password'>Contraseña</label>
-                      <div className='col-md-5'>
-                        <input id='password' name='password' type='password' placeholder='Contraseña' className='form-control input-md' required='' />
-                      </div>
-                      <button type='submit' className='btn btn-primary'>
-                        <i className='fa fa-fw fa-save' />Guardar</button>
-                    </div>
-                  </fieldset>
-                </form>
               </div>
             </div>
           </div>
