@@ -36,24 +36,33 @@ class AddPeople extends React.Component {
 
   addMember (person) {
     const newMember = this.state.people.filter(ele => ele.id === person.id)[0]
+    const newPeople = this.state.people.filter(ele => ele.id !== person.id)
     const newGroup = this.state.group
     if (!newGroup.hasOwnProperty('people')) {
       newGroup.people = []
     }
     newGroup.people.push(newMember)
-    this.setState({ group: newGroup })
+    this.setState({
+      group: newGroup,
+      people: newPeople
+    })
   }
 
   removeMember (person) {
     const oldGroup = this.state.group
     const newMembers = oldGroup.people.filter(ele => ele.id !== person.id)
+    const newPeople = this.state.people
     const newGroup = {
       name: oldGroup.name,
       location: oldGroup.location,
       search: oldGroup.search,
       people: newMembers
     }
-    this.setState({ group: newGroup })
+    newPeople.push(person)
+    this.setState({
+      group: newGroup,
+      people: newPeople
+    })
   }
 
   onDropDownChange (event) {
@@ -136,7 +145,7 @@ class AddPeople extends React.Component {
           <div className='container'>
             <div className='row'>
               <div className='col-md-6 col-md-offset-3'>
-                <input onChange={this.onSearchTermChange} />
+                <label>Search Users: <input onChange={this.onSearchTermChange} /></label>
                 <select onChange={this.onDropDownChange}>
                   <option value='first_name' defaultValue>First Name</option>
                   <option value='last_name'>Last Name</option>
