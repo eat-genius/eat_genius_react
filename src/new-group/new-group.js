@@ -50,7 +50,7 @@ class NewGroup extends React.Component {
               <FormControl onChange={this.handleChange} id='message' name='search' className='form-control' required />
               <ControlLabel htmlFor='message'>Cuisine</ControlLabel>
             </FormGroup>
-            <Button bsStyle='success'>Create Group</Button>
+            <Button bsStyle='success' type='submit'>Create Group</Button>
           </Form>
         </Row>
       </div>
