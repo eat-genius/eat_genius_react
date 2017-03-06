@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Jumbotron, Button, Col } from 'react-bootstrap'
+import { Jumbotron, Button } from 'react-bootstrap'
 
 class JumbotronComponent extends Component {
   constructor (props) {
