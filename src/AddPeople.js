@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { browserHistory } from 'react-router'
 import React from 'react'
-import './add-people.css'
+import './App/App.css'
 
 class AddPeople extends React.Component {
   constructor (props) {

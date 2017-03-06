@@ -1,6 +1,5 @@
 import React from 'react'
 import { browserHistory } from 'react-router'
-import './new-group.css'
 
 class NewGroup extends React.Component {
   constructor (props) {

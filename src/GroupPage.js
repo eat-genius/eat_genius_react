@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 // import { Link } from 'react-router'
 import axios from 'axios'
-import './group-page.css'
+import './App/App.css'
 
 class GroupPage extends Component {
   constructor (props) {

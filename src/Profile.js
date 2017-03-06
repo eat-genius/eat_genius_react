@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
 import { Link, browserHistory } from 'react-router'
 import axios from 'axios'
-import Breadcrumb from '../Breadcrumb'
-import './profile.css'
+import Breadcrumb from './Breadcrumb'
 
 class Profile extends Component {
   constructor (props) {
@@ -56,9 +55,9 @@ class Profile extends Component {
     return (
       <div className='container target'>
         <ol className='breadcrumb'>
-    <li><Link to='/'>Home</Link></li>
-    <li className='active'>Profile</li>
-  </ol>
+          <li><Link to='/'>Home</Link></li>
+          <li className='active'>Profile</li>
+        </ol>
         <div className='row'>
           <div className='col-sm-10'>
             <h1>{this.state.name}</h1>

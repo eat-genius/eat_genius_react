@@ -1,9 +1,7 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router'
-import './group.css'
 
 class Group extends Component {
-
   render () {
     return (
       <div className='container panel panel-default' style={{margin: 0}}>
@@ -21,4 +19,4 @@ class Group extends Component {
   }
 }
 
-module.exports = Group
+export default Group

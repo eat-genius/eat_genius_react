@@ -1,9 +1,11 @@
 import axios from 'axios'
-import React from 'react'
+import React, { Component } from 'react'
 import { Link, browserHistory } from 'react-router'
-import './navbar.css'
+import { Nav, FormGroup, FormControl, Button, NavDropdown, Navbar, NavItem, MenuItem } from 'react-bootstrap'
+import { LinkContainer } from 'react-router-bootstrap'
+import './App.css'
 
-class Navbar extends React.Component {
+class NavigationBar extends Component {
   constructor (props) {
     super(props)
 
@@ -70,7 +72,7 @@ class Navbar extends React.Component {
   render () {
     return (
       <div>
-        <nav className='navbar navbar-default navbar-fixed-top'>
+        {/* <nav className='navbar navbar-default navbar-fixed-top'>
           <div className='container-fluid'>
             <div className='navbar-header'>
               <button type='button' className='navbar-toggle collapsed' data-toggle='collapse' data-target='#bs-example-navbar-collapse-1' aria-expanded='false'>
@@ -96,11 +98,40 @@ class Navbar extends React.Component {
               </ul>
             </div>
           </div>
-        </nav>
+        </nav> */}
+        <Navbar fixedTop collapseOnSelect>
+          <Navbar.Header>
+            <Navbar.Brand>
+              <Link to='/'>Eat Genius</Link>
+            </Navbar.Brand>
+            <Navbar.Toggle />
+          </Navbar.Header>
+          <Navbar.Collapse>
+            <Nav>
+              {
+                this.state.isLoggedIn
+                ? <NavDropdown eventKey={3} title='Menu' id='basic-nav-dropdown'>
+                  <LinkContainer to={{ pathname: '/profile' }}><MenuItem>Profile</MenuItem></LinkContainer>
+                  <MenuItem divider />
+                  <MenuItem eventKey={3.3}>Separated link</MenuItem>
+                </NavDropdown>
+                : null
+              }
+            </Nav>
+            <Nav pullRight>
+              {
+                this.state.isLoggedIn
+                ? <LinkContainer to={{ pathname: '/' }}><NavItem onClick={this.handleSignout}>Sign Out</NavItem></LinkContainer>
+                : <LinkContainer to={{ pathname: '/signup' }}><NavItem>Sign Up / Log In</NavItem>
+                </LinkContainer>
+              }
+            </Nav>
+          </Navbar.Collapse>
+        </Navbar>
         {React.cloneElement(this.props.children, { group: this.state.group, updateGroup: this.updateGroup, userId: this.state.userId, updateUser: this.updateUser, isLoggedIn: this.state.isLoggedIn, updateLoggedIn: this.updateLoggedIn })}
       </div>
     )
   }
 }
 
-module.exports = Navbar
+export default NavigationBar
