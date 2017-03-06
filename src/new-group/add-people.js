@@ -107,7 +107,13 @@ class AddPeople extends React.Component {
         return axios.post('/restaurants', restaurantsObj)
       })
       .then((res) => {
-        console.log('it worked', res)
+        this.props.updateGroup({
+          id: 0,
+          name: '',
+          location: '',
+          search: '',
+          people: []
+        })
       })
       .catch((err) => {
         console.log(err)
