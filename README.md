@@ -36,7 +36,7 @@ Jerome has a texting group with his friends who are going out to eat together, a
 - Bootstrap
 - Axios
 ### Demos
-![alt tag](http://www.giphy.com/gifs/3ohzdOrWyu31ki8YNi)
+![Loggin In](http://www.giphy.com/gifs/3ohzdOrWyu31ki8YNi)
 ### Video Sample
 #### Watch this brief two minute walk-though of our application.
 [![my cool video](https://img.youtube.com/vi/glEvogjdEVY/0.jpg)](https://www.youtube.com/watch?v=glEvogjdEVY)
