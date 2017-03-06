@@ -3,7 +3,7 @@ import Group from '../group/group'
 import GroupPage from '../group/group-page'
 import GroupVote from '../group/group-vote'
 import Landing from '../landing/landing'
-import Navbar from './navbar'
+import NavbarComponent from './navbar'
 import NewGroup from '../new-group/new-group'
 import Profile from '../profile/profile'
 import SignUpForm from '../signup/signup'
@@ -16,7 +16,7 @@ class App extends Component {
   render () {
     return (
       <Router history={browserHistory}>
-        <Route path='/' component={Navbar}>
+        <Route path='/' component={NavbarComponent}>
           <IndexRoute component={Landing} />
           <Route path='/signup' component={SignUpForm} />
           <Route path='/login' component={LoginForm} />
