@@ -1,5 +1,6 @@
 import React from 'react'
 import { browserHistory } from 'react-router'
+import { Row, Form, FormControl, ControlLabel, FormGroup, Button } from 'react-bootstrap'
 import './new-group.css'
 
 class NewGroup extends React.Component {
@@ -32,47 +33,26 @@ class NewGroup extends React.Component {
 
   render () {
     return (
-      // <div classNameName='new-group-main'>
-      //   <div classNameName='new-group'>
-      //     <h3>New Group</h3>
-      //     <form classNameName='new-group-form'>
-      //       <label>
-      //         Group Name:
-              // <input type='text' name='name' placeholder='Group Name' onChange={this.handleChange} />
-      //       </label>
-      //       <label>
-      //         Location:
-      //         <input type='text' name='location' placeholder='Location' onChange={this.handleChange} />
-      //       </label>
-      //       <label>
-      //         Type of Restaurant:
-      //         <input type='text' name='search' placeholder='Search Term' onChange={this.handleChange} />
-      //       </label>
-      //       <input type='submit' onClick={this.handleSubmit} />
-      //     </form>
-      //   </div>
-      // </div>
-
-      <div className='container'>
-        <div className='row'>
-          <form id='newGroup' onSubmit={this.handleSubmit} role='form' className='col-md-9 go-right'>
+      <div style={{display: 'flex', justifyContent: 'center'}} className='container'>
+        <Row>
+          <Form id='newGroup' onSubmit={this.handleSubmit} role='form' className='col-md-9 go-right'>
             <h2>Create Your Group</h2>
             <p>Create a group name and enter a search preference.</p>
-            <div className='form-group'>
-              <input onChange={this.handleChange} id='name' name='name' type='text' className='form-control' required />
+            <FormGroup>
+              <FormControl onChange={this.handleChange} id='name' name='name' type='text' className='form-control' required />
               <label htmlFor='name'>Group Name</label>
-            </div>
-            <div className='form-group'>
-              <input onChange={this.handleChange} id='phone' name='location' type='tel' className='form-control' required />
-              <label htmlFor='phone'>Location</label>
-            </div>
-            <div className='form-group'>
-              <input onChange={this.handleChange} id='message' name='search' className='form-control' required />
-              <label htmlFor='message'>Cuisine</label>
-            </div>
-            <button className='btn btn-success'>Create Group</button>
-          </form>
-        </div>
+            </FormGroup>
+            <FormGroup>
+              <FormControl onChange={this.handleChange} id='phone' name='location' type='tel' className='form-control' required />
+              <ControlLabel htmlFor='phone'>Location</ControlLabel>
+            </FormGroup>
+            <FormGroup>
+              <FormControl onChange={this.handleChange} id='message' name='search' className='form-control' required />
+              <ControlLabel htmlFor='message'>Cuisine</ControlLabel>
+            </FormGroup>
+            <Button bsStyle='success'>Create Group</Button>
+          </Form>
+        </Row>
       </div>
     )
   }

@@ -3,7 +3,7 @@ import { browserHistory } from 'react-router'
 import axios from 'axios'
 import Dropzone from 'react-dropzone'
 import request from 'superagent'
-import { Col, Row, FormGroup, FormControl, ControlLabel, HelpBlock, Form, Button, validationState } from 'react-bootstrap'
+import { Col, Row, FormGroup, FormControl, ControlLabel, Form, Button, validationState } from 'react-bootstrap'
 import { LinkContainer } from 'react-router-bootstrap'
 
 const CLOUDINARY_UPLOAD_PRESET = 'torqfs7z'
@@ -166,14 +166,6 @@ class SignUpForm extends Component {
             <div className='panel panel-default'>
               <div className='panel-heading'>
                 <h3 className='panel-title'>Sign up for Eat Genius!</h3>
-                <LinkContainer to='login'>
-                  <Button
-                    style={{ marginTop: '1%' }}
-                    bsSize='xsmall'
-                    className='btn-success'>
-                    Login Here
-                  </Button>
-                </LinkContainer>
               </div>
               <div className='panel-body'>
                 <Form onSubmit={this.handleSubmit} role='form'>
