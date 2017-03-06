@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { browserHistory, Link } from 'react-router'
 import axios from 'axios'
+import { Row, Col, Form, FormControl, Button, FormGroup, ControlLabel, HelpBlock } from 'react-bootstrap'
 
 function validate (email, password) {
   // true means invalid
@@ -70,21 +71,21 @@ class LoginForm extends Component {
             <Link to='/'> main site</Link>.
           </div>
           <div className='modal-body'>
-            <div className='row'>
-              <div className='col-xs-6'>
+            <Row>
+              <Col xs={6}>
                 <div className='well'>
-                  <form onSubmit={this.handleSubmit} id='loginForm'>
-                    <div className='form-group'>
-                      <label htmlFor='email' className='control-label'>Email</label>
-                      <input className={errors.email ? 'error form-control' : 'form-control'} type='text' placeholder='Enter email' value={this.state.email} onChange={this.handleChange} name='email' />
-                      <span className='help-block' />
-                    </div>
-                    <div className='form-group'>
-                      <label htmlFor='password' className='control-label'>Password</label>
-                      <input className={errors.password ? 'error form-control' : 'form-control'} type='password' placeholder='Enter password' value={this.state.password} onChange={this.handleChange} name='password' />
+                  <Form onSubmit={this.handleSubmit} id='loginForm'>
+                    <FormGroup>
+                      <ControlLabel htmlFor='email' className='control-label'>Email</ControlLabel>
+                      <FormControl className={errors.email ? 'error form-control' : 'form-control'} type='text' placeholder='Enter email' value={this.state.email} onChange={this.handleChange} name='email' />
+                      <HelpBlock />
+                    </FormGroup>
+                    <FormGroup>
+                      <ControlLabel htmlFor='password' className='control-label'>Password</ControlLabel>
+                      <FormControl className={errors.password ? 'error form-control' : 'form-control'} type='password' placeholder='Enter password' value={this.state.password} onChange={this.handleChange} name='password' />
 
-                      <span className='help-block' />
-                    </div>
+                      <HelpBlock />
+                    </FormGroup>
                     <div id='loginErrorMsg' className='alert alert-error hide'>Wrong username or password</div>
                     <div className='checkbox'>
                       <label>
@@ -93,12 +94,12 @@ class LoginForm extends Component {
                       <p className='help-block'>(if this is a private computer)</p>
                     </div>
 
-                    <button disabled={isDisabled} type='submit' value='login' name='submit' className='btn btn-success btn-block'>Login</button>
+                    <Button block disabled={isDisabled} type='submit' value='login' name='submit' bsStyle='success'>Login</Button>
 
-                  </form>
+                  </Form>
                 </div>
-              </div>
-              <div className='col-xs-6'>
+              </Col>
+              <Col xs={6}>
                 <p className='lead'>Register now for <span className='text-success'>FREE</span></p>
                 <ul className='list-unstyled' style={{lineHeight: '2'}}>
                   <li><span className='fa fa-check text-success' /> Create your profile</li>
@@ -111,8 +112,8 @@ class LoginForm extends Component {
                 <p>
                   <Link to='signup' className='btn btn-info btn-block'>Register</Link>
                 </p>
-              </div>
-            </div>
+              </Col>
+            </Row>
           </div>
         </div>
 
