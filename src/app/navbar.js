@@ -83,11 +83,11 @@ class NavbarComponent extends Component {
               {
                   this.state.isLoggedIn
                   ? <NavDropdown eventKey={3} title='Menu' id='basic-nav-dropdown'>
-                    <LinkContainer to={{ pathname: '/profile' }}><MenuItem eventKey={3.1}>Profile</MenuItem></LinkContainer>
-                    <MenuItem eventKey={3.2}>Another action</MenuItem>
-                    <MenuItem eventKey={3.3}>Something else here</MenuItem>
+                    <LinkContainer to={{ pathname: '/profile' }}><MenuItem>Profile</MenuItem></LinkContainer>
+                    <MenuItem>Inbox</MenuItem>
+                    <MenuItem>Contribute</MenuItem>
                     <MenuItem divider />
-                    <MenuItem eventKey={3.3}>Separated link</MenuItem>
+                    <MenuItem>Submit Feedback</MenuItem>
                   </NavDropdown>
                   : null
                 }
@@ -96,8 +96,14 @@ class NavbarComponent extends Component {
               {
                   this.state.isLoggedIn
                   ? <LinkContainer to={{ pathname: '/' }}><NavItem onClick={this.handleSignout}>Sign Out</NavItem></LinkContainer>
-                  : <LinkContainer to={{ pathname: '/signup' }}><NavItem>Sign Up / Log In</NavItem>
+                  : <LinkContainer to={{ pathname: '/signup' }}><NavItem>Sign Up</NavItem>
                   </LinkContainer>
+                }
+              {
+                  !this.state.isLoggedIn
+                  ? <LinkContainer to={{ pathname: '/login' }}><NavItem>Login </NavItem>
+                  </LinkContainer>
+                  : null
                 }
             </Nav>
           </Navbar.Collapse>
