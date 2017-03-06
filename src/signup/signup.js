@@ -10,7 +10,7 @@ const CLOUDINARY_UPLOAD_PRESET = 'torqfs7z'
 const CLOUDINARY_UPLOAD_URL = 'https://api.cloudinary.com/v1_1/dk5dqve4y/upload'
 
 function validate (first_name, last_name, email, password, password_confirm) {
-  // true means invalid
+  // True means invalid
   return {
     first_name: first_name.length === 0,
     last_name: last_name.length === 0,
