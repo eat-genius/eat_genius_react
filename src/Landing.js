@@ -1,6 +1,5 @@
 import React from 'react'
 import { Link } from 'react-router'
-import './landing.css'
 
 class Landing extends React.Component {
   render () {
@@ -15,7 +14,7 @@ class Landing extends React.Component {
               <li><Link to='profile'>Profile</Link></li>
             </ol>
           }
-          
+
         </div>
         <div className='jumbotron' style={{backgroundImage: 'url(http://res.cloudinary.com/dk5dqve4y/image/upload/c_scale,w_1201/v1488398667/bg_s2qojr.jpg)'}}>
           <div className='container'>

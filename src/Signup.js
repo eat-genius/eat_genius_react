@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { browserHistory } from 'react-router'
 import axios from 'axios'
-import './signup.css'
 import Dropzone from 'react-dropzone'
 import request from 'superagent'
 
